@@ -86,7 +86,7 @@ export default function RootLayout({
       className={`${cormorant.variable} ${karla.variable} ${caveat.variable} h-full antialiased`}
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: `requestAnimationFrame(function(){requestAnimationFrame(function(){document.documentElement.classList.add('js-loaded')})})` }} />
+        {/* Scroll-driven animations are pure CSS — no JS setup needed */}
       </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>

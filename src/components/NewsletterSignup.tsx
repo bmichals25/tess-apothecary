@@ -2,14 +2,12 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useReveal } from "@/hooks/useReveal";
 import StarField from "./StarField";
 import WaxSeal from "./WaxSeal";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  const revealRef = useReveal();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,7 +37,7 @@ export default function NewsletterSignup() {
         <div className="absolute inset-0 fog-layer-2 opacity-20" />
       </div>
 
-      <div ref={revealRef} className="relative z-10 max-w-2xl mx-auto text-center reveal-section">
+      <div className="relative z-10 max-w-2xl mx-auto text-center reveal-section">
         <div className="flex justify-center mb-6">
           <WaxSeal size={48} className="opacity-50" />
         </div>

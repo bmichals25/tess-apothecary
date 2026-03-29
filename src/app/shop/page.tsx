@@ -3,13 +3,9 @@
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
 import { products, categories } from "@/lib/products";
-import { useReveal } from "@/hooks/useReveal";
-import { useStaggerReveal } from "@/hooks/useStaggerReveal";
 
 export default function ShopPage() {
   const [activeCategory, setActiveCategory] = useState("All");
-  const headingRef = useReveal();
-  const gridRef = useStaggerReveal();
 
   const filtered =
     activeCategory === "All"
@@ -20,7 +16,7 @@ export default function ShopPage() {
     <div className="pt-20 sm:pt-24">
       {/* Header */}
       <section className="bg-[var(--apothecary-black)] py-20 sm:py-24 px-5">
-        <div ref={headingRef} className="max-w-4xl mx-auto text-center reveal-section">
+        <div className="max-w-4xl mx-auto text-center reveal-section">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             The Apothecary
           </p>
@@ -58,7 +54,7 @@ export default function ShopPage() {
           </div>
 
           {/* Product Grid */}
-          <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             {filtered.map((product) => (
               <div key={product.slug} className="reveal-card">
                 <ProductCard product={product} />

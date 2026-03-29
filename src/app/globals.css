@@ -677,12 +677,6 @@ main {
     transform: none;
   }
 
-  .js-loaded .reveal-section,
-  .js-loaded .reveal-card {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
 
   .product-card:hover {
     transform: none;
@@ -766,50 +760,48 @@ main {
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
-/* ─── Scroll Reveal (CSS + IntersectionObserver) ─── */
+/* ─── Scroll-Driven Reveal Animations (Apple-style) ─── */
+/* Animation progress is tied to scroll position — no waiting for scroll to stop */
 
-/* Content is visible by default */
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealCard {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section-level scroll reveal: animates as element enters viewport */
 .reveal-section {
-  opacity: 1;
-  transform: translateY(0);
+  animation: revealUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 25%;
 }
 
-/* Only when JS has loaded, set up the pre-animation state */
-.js-loaded .reveal-section {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-/* When scrolled into view */
-.js-loaded .reveal-section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Product card stagger reveal */
+/* Product cards: same scroll-linked animation with staggered ranges */
 .reveal-card {
-  opacity: 1;
-  transform: translateY(0);
+  animation: revealCard linear both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
 }
 
-.js-loaded .reveal-card {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
+.reveal-card:nth-child(2) { animation-range: entry 3% entry 33%; }
+.reveal-card:nth-child(3) { animation-range: entry 6% entry 36%; }
+.reveal-card:nth-child(4) { animation-range: entry 4% entry 34%; }
+.reveal-card:nth-child(5) { animation-range: entry 8% entry 38%; }
+.reveal-card:nth-child(6) { animation-range: entry 10% entry 40%; }
 
-.js-loaded .reveal-card.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Fallback for browsers without scroll-driven animations (~10%) */
+@supports not (animation-timeline: view()) {
+  .reveal-section,
+  .reveal-card {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
-/* Stagger via nth-child */
-.js-loaded .reveal-card:nth-child(2) { transition-delay: 0.1s; }
-.js-loaded .reveal-card:nth-child(3) { transition-delay: 0.2s; }
-.js-loaded .reveal-card:nth-child(4) { transition-delay: 0.15s; }
-.js-loaded .reveal-card:nth-child(5) { transition-delay: 0.25s; }
-.js-loaded .reveal-card:nth-child(6) { transition-delay: 0.3s; }
 
 /* ─── Social Icon Hover ─── */
 .social-hover {

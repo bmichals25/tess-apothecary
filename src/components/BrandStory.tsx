@@ -1,12 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useReveal } from "@/hooks/useReveal";
 import StarField from "./StarField";
 
 export default function BrandStory() {
-  const revealRef = useReveal();
-
   return (
     <section className="relative bg-dark-wood py-28 sm:py-36 px-5 overflow-hidden">
       {/* Star field background */}
@@ -15,7 +12,7 @@ export default function BrandStory() {
       {/* Subtle atmospheric gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--forest-veil)]/10 via-transparent to-[var(--forest-veil)]/5" />
 
-      <div ref={revealRef} className="relative z-10 max-w-5xl mx-auto reveal-section">
+      <div className="relative z-10 max-w-5xl mx-auto reveal-section">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Left: decorative vertical text */}
           <div className="hidden lg:flex lg:col-span-2 justify-center">

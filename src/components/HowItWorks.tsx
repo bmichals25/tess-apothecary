@@ -1,7 +1,5 @@
 "use client";
 
-import { useReveal } from "@/hooks/useReveal";
-import { useStaggerReveal } from "@/hooks/useStaggerReveal";
 
 const steps = [
   {
@@ -71,13 +69,10 @@ const steps = [
 ];
 
 export default function HowItWorks() {
-  const headingRef = useReveal();
-  const stepsRef = useStaggerReveal();
-
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <div ref={headingRef} className="text-center mb-20 reveal-section">
+        <div className="text-center mb-20 reveal-section">
           <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
             Chapter II
           </p>
@@ -89,7 +84,7 @@ export default function HowItWorks() {
           </h2>
         </div>
 
-        <div ref={stepsRef} className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {steps.map((step, index) => (
             <div key={step.number} className="reveal-card">
               <div className="text-center group">
