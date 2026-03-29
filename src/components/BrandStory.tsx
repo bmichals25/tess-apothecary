@@ -8,7 +8,7 @@ export default function BrandStory() {
       {/* Subtle atmospheric gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--forest-veil)]/10 via-transparent to-[var(--forest-veil)]/5" />
 
-      <div className="relative z-10 max-w-5xl mx-auto reveal-section">
+      <div className="relative z-10 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           {/* Left: decorative vertical text */}
           <div className="hidden lg:flex lg:col-span-2 justify-center">
@@ -21,7 +21,7 @@ export default function BrandStory() {
           </div>
 
           {/* Right: story content */}
-          <div className="lg:col-span-10">
+          <div className="lg:col-span-10 reveal-right">
             <div>
               <p className="font-accent text-[var(--amber-elixir)] text-base mb-2 opacity-70">
                 Chapter I
@@ -31,7 +31,7 @@ export default function BrandStory() {
               </h2>
             </div>
 
-            <blockquote className="grimoire-quote font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
+            <blockquote className="reveal-rotate grimoire-quote font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
               There&apos;s a kind of knowing that lives in your hands before it
               reaches your head. The way you instinctively reach for chamomile
               when the world gets loud. The way your grandmother brewed something

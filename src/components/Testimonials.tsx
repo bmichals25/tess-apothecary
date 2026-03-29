@@ -42,7 +42,7 @@ export default function Testimonials() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
-            <div key={i} className="reveal-card">
+            <div key={i} className={i % 2 === 0 ? "reveal-left" : "reveal-right"}>
               <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-all duration-500 apothecary-label">
                 {/* Large decorative quote mark */}
                 <span className="absolute top-6 left-8 font-heading text-7xl text-[var(--amber-elixir)]/10 leading-none select-none pointer-events-none">

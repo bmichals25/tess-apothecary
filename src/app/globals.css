@@ -788,13 +788,94 @@ main {
 .reveal-card:nth-child(5) { animation-range: entry 12% entry 47%; }
 .reveal-card:nth-child(6) { animation-range: entry 15% entry 50%; }
 
+/* ─── Additional scroll-driven animation variants ─── */
+
+@keyframes revealLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes revealScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes revealRotate {
+  from { opacity: 0; transform: rotate(-3deg) translateY(20px); }
+  to { opacity: 1; transform: rotate(0deg) translateY(0); }
+}
+
+@keyframes parallaxUp {
+  from { transform: translateY(40px); }
+  to { transform: translateY(-40px); }
+}
+
+/* Slide in from left */
+.reveal-left {
+  animation: revealLeft ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+/* Slide in from right */
+.reveal-right {
+  animation: revealRight ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+/* Scale in */
+.reveal-scale {
+  animation: revealScale ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Slight rotation reveal (for quotes, accent elements) */
+.reveal-rotate {
+  animation: revealRotate ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Parallax — element moves slower than scroll (subtle depth) */
+.parallax-slow {
+  animation: parallaxUp linear both;
+  animation-timeline: view();
+  animation-range: entry 0% exit 100%;
+}
+
+/* Image reveal with clip-path wipe */
+@keyframes revealClip {
+  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  to { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+.reveal-clip {
+  animation: revealClip ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 40%;
+}
+
 /* Graceful fallback: if browser doesn't support scroll-driven, just show everything */
 @supports not (animation-timeline: view()) {
   .reveal-section,
-  .reveal-card {
+  .reveal-card,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale,
+  .reveal-rotate,
+  .reveal-clip,
+  .parallax-slow {
     animation: none;
     opacity: 1;
     transform: none;
+    clip-path: none;
   }
 }
 

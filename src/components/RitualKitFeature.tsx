@@ -9,12 +9,12 @@ export default function RitualKitFeature() {
 
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
-      <div className="max-w-7xl mx-auto relative z-[2] reveal-section">
+      <div className="max-w-7xl mx-auto relative z-[2]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-16 items-center">
-          {/* Image area — larger, asymmetric */}
-          <div className="lg:col-span-7">
+          {/* Image area — slides in from left */}
+          <div className="lg:col-span-7 reveal-left">
             <div className="relative">
-              <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden">
+              <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden reveal-clip">
                 <img
                   src="/images/products/mockup-full-collection.jpg"
                   alt="The Ritual Kit - All 5 Blends + Intention Guide"
@@ -33,8 +33,8 @@ export default function RitualKitFeature() {
             </div>
           </div>
 
-          {/* Text content */}
-          <div className="lg:col-span-5">
+          {/* Text content — slides in from right */}
+          <div className="lg:col-span-5 reveal-right">
             <div className="flex items-center gap-3 mb-3">
               <p className="font-accent text-[var(--amber-elixir)] text-xl">
                 The Hero Product

@@ -77,7 +77,7 @@ export default function Header() {
                 src={scrolled ? "/images/logos/tess-apothecary-wordmark.jpg" : "/images/logos/tess-apothecary-wordmark-light.jpg"}
                 alt="Tess's Apothecary"
                 className="w-auto transition-opacity duration-500"
-                style={{ height: "clamp(2.25rem, 2vw + 1.5rem, 3rem)" }}
+                style={{ height: "clamp(2.75rem, 4vw + 1.5rem, 4.5rem)" }}
               />
             </Link>
 
