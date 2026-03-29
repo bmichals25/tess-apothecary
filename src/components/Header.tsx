@@ -74,10 +74,10 @@ export default function Header() {
             {/* Logo */}
             <Link href="/" className="relative z-10" aria-label="Tess's Apothecary - Home">
               <img
-                src={scrolled ? "/images/logos/tess-apothecary-wordmark-dark-transparent.png" : "/images/logos/tess-apothecary-wordmark-transparent.png"}
+                src={scrolled ? "/images/logos/tess-wordmark-horizontal-dark.png" : "/images/logos/tess-wordmark-horizontal-gold.png"}
                 alt="Tess's Apothecary"
                 className="w-auto transition-opacity duration-500"
-                style={{ height: "clamp(3.5rem, 6vw + 2rem, 6rem)" }}
+                style={{ height: "clamp(2rem, 3vw + 1rem, 3rem)" }}
               />
             </Link>
 
