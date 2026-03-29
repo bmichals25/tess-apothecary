@@ -21,14 +21,23 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--apothecary-black)]">
-      {/* Pure CSS animated gradient background — no JS, no canvas */}
-      <div className="absolute inset-0 hero-gradient" />
+      {/* Looping hero video background */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover"
+        poster="/images/products/mockup-full-collection.jpg"
+      >
+        <source src="/videos/hero-video.mp4" type="video/mp4" />
+      </video>
 
-      {/* CSS fog layers — no JS */}
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 fog-layer-1" />
-        <div className="absolute inset-0 fog-layer-2" />
-      </div>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-[var(--apothecary-black)]/60" />
+
+      {/* Subtle gradient overlay for depth */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--apothecary-black)] via-transparent to-[var(--apothecary-black)]/40" />
 
       {/* Floating botanical SVGs — pure CSS animation */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
