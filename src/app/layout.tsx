@@ -100,6 +100,48 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: `requestAnimationFrame(function(){var s=new Set(),t='.reveal-section,.reveal-card,.reveal-left,.reveal-right,.reveal-scale,.reveal-rotate,.reveal-clip',o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting&&!s.has(e.target)){s.add(e.target);e.target.style.animation='none';e.target.style.opacity='1';e.target.style.transform='none';e.target.style.clipPath='none';o.unobserve(e.target)}})},{threshold:0.05});document.querySelectorAll(t).forEach(function(e){o.observe(e)})})` }} />
       </head>
       <body className="min-h-full flex flex-col">
+        {/* Full-page loader — shows while site assets load, fades out when ready */}
+        <div id="site-loader" style={{
+          position: 'fixed',
+          inset: 0,
+          zIndex: 9999,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '24px',
+          background: '#1A1A1A',
+          transition: 'opacity 0.6s ease',
+        }}>
+          {/* Animated mortar & pestle icon */}
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="#D4A843" strokeWidth="1.5" style={{ animation: 'loaderPulse 1.5s ease-in-out infinite' }}>
+            <path d="M30 55 Q50 40 70 55" />
+            <path d="M25 58 Q50 72 75 58" />
+            <path d="M25 58 L30 55" />
+            <path d="M75 58 L70 55" />
+            <line x1="55" y1="35" x2="60" y2="20" />
+            <path d="M40 50 Q35 42 28 45" />
+            <path d="M60 50 Q65 42 72 45" />
+            <path d="M50 48 Q50 38 50 30" />
+            <circle cx="50" cy="18" r="3" fill="#D4A843" opacity="0.4" />
+          </svg>
+          <p style={{ fontFamily: "'Cormorant Garamond', Georgia, serif", color: '#D4A843', fontSize: '14px', letterSpacing: '0.15em', textTransform: 'uppercase' }}>
+            Preparing your ritual...
+          </p>
+          <style dangerouslySetInnerHTML={{ __html: `
+            @keyframes loaderPulse { 0%,100% { opacity: 0.4; transform: scale(0.95); } 50% { opacity: 1; transform: scale(1.05); } }
+          `}} />
+        </div>
+        <script dangerouslySetInnerHTML={{ __html: `
+          window.addEventListener('load', function() {
+            var loader = document.getElementById('site-loader');
+            if (loader) {
+              loader.style.opacity = '0';
+              setTimeout(function() { loader.remove(); }, 600);
+            }
+          });
+        `}} />
+
         <CartProvider>
           {/* Skip to content link for keyboard/screen-reader users */}
           <a href="#main-content" className="skip-to-content">
