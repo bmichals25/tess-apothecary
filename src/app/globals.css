@@ -1,26 +1,128 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --apothecary-black: #1A1A1A;
+  --forest-veil: #2D4A3E;
+  --amber-elixir: #C4873B;
+  --dried-lavender: #8B7B9E;
+  --ritual-rose: #B5706E;
+  --burnished-gold: #D4A843;
+  --parchment: #F5F0E8;
+  --linen: #EDE7DB;
+  --warm-stone: #A89F91;
+  --bone: #FAF8F5;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--parchment);
+  --color-foreground: var(--apothecary-black);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--parchment);
+  color: var(--apothecary-black);
+  font-family: 'Karla', 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.65;
+  letter-spacing: 0.01em;
+}
+
+/* Hero gradient animation */
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    #1A1A1A 0%,
+    #2D4A3E 25%,
+    #1A1A1A 50%,
+    #4A3428 75%,
+    #1A1A1A 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  25% { background-position: 100% 50%; }
+  50% { background-position: 100% 0%; }
+  75% { background-position: 0% 100%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Fog layers */
+.fog-layer-1 {
+  background: radial-gradient(ellipse at 20% 80%, rgba(196,135,59,0.15) 0%, transparent 60%);
+  animation: fogDrift1 20s ease-in-out infinite;
+}
+
+.fog-layer-2 {
+  background: radial-gradient(ellipse at 80% 20%, rgba(45,74,62,0.2) 0%, transparent 60%);
+  animation: fogDrift2 25s ease-in-out infinite;
+}
+
+@keyframes fogDrift1 {
+  0%, 100% { transform: translateX(0) translateY(0) scale(1); }
+  33% { transform: translateX(30px) translateY(-20px) scale(1.1); }
+  66% { transform: translateX(-20px) translateY(10px) scale(0.95); }
+}
+
+@keyframes fogDrift2 {
+  0%, 100% { transform: translateX(0) translateY(0) scale(1); }
+  33% { transform: translateX(-40px) translateY(20px) scale(1.05); }
+  66% { transform: translateX(20px) translateY(-30px) scale(1.1); }
+}
+
+/* Candlelight glow */
+.candle-glow {
+  background: radial-gradient(circle, rgba(196,135,59,0.08) 0%, transparent 70%);
+  animation: candleFlicker 3s ease-in-out infinite;
+}
+
+@keyframes candleFlicker {
+  0%, 100% { opacity: 0.6; transform: translate(-50%, 0) scale(1); }
+  25% { opacity: 0.8; transform: translate(-50%, -2px) scale(1.02); }
+  50% { opacity: 0.5; transform: translate(-50%, 1px) scale(0.98); }
+  75% { opacity: 0.9; transform: translate(-50%, -1px) scale(1.01); }
+}
+
+/* Hero text fade-in */
+.hero-fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero-gradient {
+    animation: none;
+    background-position: 0% 50%;
+  }
+  .fog-layer-1,
+  .fog-layer-2,
+  .candle-glow {
+    animation: none;
+  }
+  .hero-fade-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(196, 135, 59, 0.3);
+  color: #1A1A1A;
 }
