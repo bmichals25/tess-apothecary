@@ -86,7 +86,16 @@ export default function RootLayout({
       className={`${cormorant.variable} ${karla.variable} ${caveat.variable} h-full antialiased`}
     >
       <head>
-        {/* Scroll-driven animations are pure CSS — no JS setup needed */}
+        {/* Preload all product images so the page scrolls smoothly with no loading pauses */}
+        <link rel="preload" as="image" href="/images/logos/tess-wordmark-horizontal-gold.png" />
+        <link rel="preload" as="image" href="/images/products/mockup-full-collection.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-eventide-elixir.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-sun-tonic.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-shadow-work.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-inner-sight.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-heart-opener.jpg" />
+        <link rel="preload" as="image" href="/images/products/mockup-ritual-kit-closed.jpg" />
+        <link rel="preload" as="video" href="/videos/hero-video.mp4" />
       </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>

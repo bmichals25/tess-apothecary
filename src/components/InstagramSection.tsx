@@ -34,7 +34,7 @@ export default function InstagramSection() {
                   src={item.image}
                   alt={item.alt}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
+                  loading="eager"
                 />
 
                 {/* Hover overlay with heart icon */}

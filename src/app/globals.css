@@ -972,3 +972,20 @@ summary,
 .qty-btn:hover {
   background-color: var(--linen);
 }
+
+/* ─── Preload optimization: GPU-accelerate animated elements ─── */
+.reveal-section,
+.reveal-card,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
+.reveal-rotate,
+.reveal-clip {
+  will-change: transform, opacity;
+}
+
+/* Hardware-accelerate all images for smooth scroll compositing */
+img {
+  will-change: transform;
+  content-visibility: auto;
+}

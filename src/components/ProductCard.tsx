@@ -50,7 +50,8 @@ export default function ProductCard({
           src={product.image}
           alt={product.name}
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.06]"
-          loading="lazy"
+          loading="eager"
+          fetchPriority="high"
         />
 
         {/* Subtle dark overlay for text legibility on hover */}

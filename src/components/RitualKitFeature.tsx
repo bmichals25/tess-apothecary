@@ -19,7 +19,8 @@ export default function RitualKitFeature() {
                   src="/images/products/mockup-full-collection.jpg"
                   alt="The Ritual Kit - All 5 Blends + Intention Guide"
                   className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.04]"
-                  loading="lazy"
+                  loading="eager"
+                  fetchPriority="high"
                 />
               </div>
 
