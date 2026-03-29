@@ -35,10 +35,10 @@ export default function FAQAccordion({
               const key = `${cat.title}-${i}`;
               const isOpen = openItems.has(key);
               return (
-                <div key={key} className="border-b border-[var(--warm-stone)]/15">
+                <div key={key} className="border-b border-[var(--warm-stone)]/15 transition-colors duration-200 hover:bg-[var(--linen)]/50">
                   <button
                     onClick={() => toggle(key)}
-                    className="w-full flex items-start justify-between py-5 text-left group"
+                    className="w-full flex items-start justify-between py-5 px-3 text-left group"
                     aria-expanded={isOpen}
                   >
                     <span className="font-body text-[var(--apothecary-black)] text-[15px] pr-4 group-hover:text-[var(--forest-veil)] transition-colors font-medium leading-relaxed">

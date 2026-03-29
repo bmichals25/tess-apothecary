@@ -69,7 +69,7 @@ export default function RitualKitFeature() {
               </button>
               <Link
                 href="/shop/the-ritual-kit"
-                className="px-8 py-4 border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:border-[var(--forest-veil)] hover:text-[var(--forest-veil)] transition-all duration-400 text-center"
+                className="px-8 py-4 border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:border-[var(--forest-veil)] hover:text-[var(--forest-veil)] hover:scale-[1.02] transition-all duration-300 text-center"
               >
                 Learn More
               </Link>

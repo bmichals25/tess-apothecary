@@ -3,6 +3,25 @@
 import Link from "next/link";
 import MoonPhases from "./MoonPhases";
 import WaxSeal from "./WaxSeal";
+
+function BackToTop() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+  return (
+    <button
+      onClick={scrollToTop}
+      className="back-to-top inline-flex items-center gap-2 font-body text-xs text-[var(--warm-stone)] hover:text-[var(--amber-elixir)] uppercase tracking-[0.1em] transition-colors duration-300"
+      aria-label="Scroll back to top"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+      </svg>
+      Back to top
+    </button>
+  );
+}
+
 export default function Footer() {
   return (
     <footer className="bg-dark-wood text-[var(--parchment)] relative overflow-hidden" role="contentinfo">
@@ -31,7 +50,7 @@ export default function Footer() {
               <img
                 src="/images/logos/tess-apothecary-seal-logo.jpg"
                 alt="Tess's Apothecary"
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full opacity-90"
+                className="w-20 h-20 sm:w-24 sm:h-24 rounded-full opacity-90"
               />
             </div>
             <p className="font-body text-sm text-[var(--warm-stone)] leading-relaxed max-w-xs mb-8">
@@ -98,7 +117,7 @@ export default function Footer() {
             <h3 className="font-body text-[11px] uppercase tracking-[0.12em] text-[var(--amber-elixir)] mb-5 font-bold">
               Connect
             </h3>
-            <div className="flex gap-6 mb-8">
+            <div className="flex gap-8 mb-8">
               {[
                 { name: "Instagram", url: "https://instagram.com/tessapothecary" },
                 { name: "TikTok", url: "https://tiktok.com/@tessapothecary" },
@@ -147,6 +166,7 @@ export default function Footer() {
           <p className="font-body text-xs text-[var(--warm-stone)]/60">
             &copy; {new Date().getFullYear()} Tess&apos;s Apothecary LLC. All rights reserved.
           </p>
+          <BackToTop />
           <p className="font-accent text-sm text-[var(--warm-stone)]/40">
             Brewed with intention
           </p>

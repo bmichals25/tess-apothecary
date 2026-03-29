@@ -27,7 +27,7 @@ export default function InstagramSection() {
                 href="https://instagram.com/tessapothecary"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block aspect-square relative overflow-hidden group cursor-pointer"
+                className="block aspect-square relative overflow-hidden group product-image-container"
                 aria-label={`View on Instagram - ${item.alt}`}
               >
                 <img

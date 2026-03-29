@@ -45,7 +45,7 @@ export default function ProductGrid() {
         <div className="text-center mt-14">
           <Link
             href="/shop"
-            className="inline-block px-10 py-4 border border-[var(--forest-veil)] text-[var(--forest-veil)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--forest-veil)] hover:text-[var(--parchment)] transition-all duration-400"
+            className="inline-block px-10 py-4 border border-[var(--forest-veil)] text-[var(--forest-veil)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--forest-veil)] hover:text-[var(--parchment)] hover:scale-[1.02] hover:shadow-md transition-all duration-300"
           >
             View All Blends
           </Link>

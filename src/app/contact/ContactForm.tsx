@@ -108,7 +108,7 @@ export default function ContactForm() {
       </div>
       <button
         type="submit"
-        className="px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.08em] uppercase hover:bg-[var(--apothecary-black)] transition-colors"
+        className="px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.08em] uppercase hover:bg-[var(--apothecary-black)] hover:scale-[1.02] hover:shadow-md transition-all duration-300"
       >
         Send Message
       </button>

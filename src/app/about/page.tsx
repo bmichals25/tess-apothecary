@@ -54,14 +54,14 @@ export default function AboutPage() {
 
             <div className="w-16 h-px bg-[var(--amber-elixir)] mx-auto my-10" />
 
-            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed">
+            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed prose-body">
               We believe that every herb carries an intention. Lavender
               doesn&apos;t just taste floral &mdash; it asks you to soften.
               Reishi doesn&apos;t just support immunity &mdash; it asks you to
               slow down. Rosemary doesn&apos;t just sharpen focus &mdash; it asks
               you to remember who you are.
             </p>
-            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed">
+            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed prose-body">
               Our blends are formulated at the intersection of herbalism and
               ritual. Each one is designed for a specific moment in your day
               &mdash; the exhale before sleep, the spark of morning energy, the
@@ -70,7 +70,7 @@ export default function AboutPage() {
               blend them in small batches with the kind of care that doesn&apos;t
               scale &mdash; and we like it that way.
             </p>
-            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed">
+            <p className="font-body text-[var(--apothecary-black)]/80 text-base leading-relaxed prose-body">
               This isn&apos;t wellness as a trend. This is wellness as a
               practice. A cup of tea as a spell you cast for yourself. A daily
               ritual that says:{" "}
@@ -185,7 +185,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/shop"
-            className="inline-block px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.08em] uppercase hover:bg-[var(--apothecary-black)] transition-colors"
+            className="inline-block px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.08em] uppercase hover:bg-[var(--apothecary-black)] hover:scale-[1.02] hover:shadow-md transition-all duration-300"
           >
             Shop the Collection
           </Link>

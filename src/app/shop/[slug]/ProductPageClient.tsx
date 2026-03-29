@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import ProductCard from "@/components/ProductCard";
@@ -13,6 +14,7 @@ export default function ProductPageClient({
   related: Product[];
 }) {
   const { addItem } = useCart();
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <div className="pt-20 sm:pt-24">
@@ -38,7 +40,7 @@ export default function ProductPageClient({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16">
             {/* Product Image */}
             <div>
-              <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-[var(--linen)]">
+              <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden product-image-container">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -63,7 +65,7 @@ export default function ProductPageClient({
                   ${product.price.toFixed(2)}
                 </p>
 
-                <div className="mb-8">
+                <div className="mb-8 prose-body">
                   {product.description.split("\n\n").map((para, i) => (
                     <p key={i} className="font-body text-[var(--apothecary-black)]/75 text-[15px] mb-4 leading-[1.8]">
                       {para}
@@ -71,13 +73,51 @@ export default function ProductPageClient({
                   ))}
                 </div>
 
+                {/* Quantity Selector */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className="font-body text-[var(--warm-stone)] text-xs uppercase tracking-[0.08em] font-medium">
+                    Quantity
+                  </span>
+                  <div className="flex items-center border border-[var(--warm-stone)]/30">
+                    <button
+                      onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      className="qty-btn w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--apothecary-black)] text-sm"
+                      aria-label="Decrease quantity"
+                    >
+                      &minus;
+                    </button>
+                    <span className="font-body text-sm w-10 text-center tabular-nums border-x border-[var(--warm-stone)]/30 h-11 flex items-center justify-center">
+                      {quantity}
+                    </span>
+                    <button
+                      onClick={() => setQuantity(quantity + 1)}
+                      className="qty-btn w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center text-[var(--apothecary-black)] text-sm"
+                      aria-label="Increase quantity"
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+
                 <button
-                  onClick={() => addItem(product.slug, product.name, product.price, product.image)}
-                  className="btn-glow w-full sm:w-auto px-10 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400 mb-10"
-                  aria-label={`Add ${product.name} to cart - $${product.price.toFixed(2)}`}
+                  onClick={() => {
+                    for (let i = 0; i < quantity; i++) {
+                      addItem(product.slug, product.name, product.price, product.image);
+                    }
+                    setQuantity(1);
+                  }}
+                  className="btn-glow w-full sm:w-auto px-10 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400 mb-4"
+                  aria-label={`Add ${quantity} ${product.name} to cart - $${(product.price * quantity).toFixed(2)}`}
                 >
-                  Add to Cart &mdash; ${product.price.toFixed(2)}
+                  Add to Cart &mdash; ${(product.price * quantity).toFixed(2)}
                 </button>
+
+                <p className="font-body text-[var(--forest-veil)] text-xs mb-10 flex items-center gap-1.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0H21M3.375 14.25V3.375c0-.621.504-1.125 1.125-1.125h12.75c.621 0 1.125.504 1.125 1.125v3.026M12 9.75h6.975M12 9.75L9.525 7.5M12 9.75L9.525 12" />
+                  </svg>
+                  Free shipping on orders over $45
+                </p>
 
                 <div className="space-y-8 border-t border-[var(--warm-stone)]/20 pt-8">
                   <div>
@@ -126,12 +166,15 @@ export default function ProductPageClient({
         </div>
       </section>
 
-      {/* Related Products */}
-      <section className="bg-[var(--parchment)] py-20 px-5">
+      {/* Pairs Well With */}
+      <section className="bg-[var(--linen)] py-20 px-5">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
+            <p className="font-accent text-[var(--amber-elixir)] text-lg mb-2">
+              Complete the ritual
+            </p>
             <h2 className="font-heading text-[var(--apothecary-black)] text-2xl sm:text-3xl font-semibold">
-              Continue Your Ritual
+              Pairs Well With
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">

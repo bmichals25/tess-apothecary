@@ -55,11 +55,43 @@ export default function ShopPage() {
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
-            {filtered.map((product) => (
-              <div key={product.slug} className="reveal-card">
-                <ProductCard product={product} />
-              </div>
-            ))}
+            {filtered.map((product) => {
+              const isRitualKit = product.slug === "the-ritual-kit";
+              const badge =
+                product.slug === "shadow-work"
+                  ? "Best Seller"
+                  : product.slug === "eventide-elixir"
+                  ? "Most Popular"
+                  : undefined;
+              return (
+                <div
+                  key={product.slug}
+                  className={`reveal-card ${
+                    isRitualKit ? "sm:col-span-2 lg:col-span-2" : ""
+                  }`}
+                >
+                  <ProductCard
+                    product={product}
+                    featured={isRitualKit}
+                    badge={badge}
+                  />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Editorial Callout */}
+          <div className="mt-14 mb-4 text-center reveal-section">
+            <div className="max-w-2xl mx-auto py-10 px-6 border-t border-b border-[var(--warm-stone)]/20">
+              <p className="font-accent text-[var(--amber-elixir)] text-lg mb-2">
+                Not sure where to start?
+              </p>
+              <p className="font-body text-[var(--apothecary-black)]/70 text-base leading-relaxed max-w-prose mx-auto">
+                The Ritual Kit includes samples of all five blends plus an intention-setting guide.
+                It&apos;s the most-gifted item in our collection, and the way most people begin
+                their journey with the Apothecary.
+              </p>
+            </div>
           </div>
 
           {/* FDA Disclaimer */}

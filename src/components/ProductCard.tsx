@@ -19,9 +19,11 @@ function getPoetryLine(slug: string): string {
 export default function ProductCard({
   product,
   featured = false,
+  badge,
 }: {
   product: Product;
   featured?: boolean;
+  badge?: string;
 }) {
   const { addItem } = useCart();
 
@@ -34,10 +36,15 @@ export default function ProductCard({
       {/* Product Image Area */}
       <Link
         href={`/shop/${product.slug}`}
-        className={`block relative overflow-hidden ${
+        className={`block relative overflow-hidden product-image-container ${
           featured ? "aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto" : "aspect-[3/4]"
         }`}
       >
+        {/* Badge */}
+        {badge && (
+          <span className="badge-best-seller">{badge}</span>
+        )}
+
         {/* Real product image */}
         <img
           src={product.image}

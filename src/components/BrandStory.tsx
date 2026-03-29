@@ -52,7 +52,7 @@ export default function BrandStory() {
 
             <Link
               href="/about"
-              className="inline-block px-10 py-4 border border-[var(--warm-stone)]/25 text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:border-[var(--amber-elixir)] hover:text-[var(--amber-elixir)] transition-all duration-400"
+              className="inline-block px-10 py-4 border border-[var(--warm-stone)]/25 text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:border-[var(--amber-elixir)] hover:text-[var(--amber-elixir)] hover:scale-[1.02] transition-all duration-300"
             >
               Read Our Story
             </Link>

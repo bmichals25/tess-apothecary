@@ -60,7 +60,7 @@ export default function Cart() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 bg-[var(--apothecary-black)]/50 backdrop-blur-sm"
+            className="absolute inset-0 bg-[var(--apothecary-black)]/50 backdrop-blur-md"
             onClick={() => setIsOpen(false)}
           />
 
@@ -192,12 +192,35 @@ export default function Cart() {
                     ${totalPrice.toFixed(2)}
                   </span>
                 </div>
-                {totalPrice < 45 && (
-                  <p className="font-body text-xs text-[var(--warm-stone)]">
-                    Add ${(45 - totalPrice).toFixed(2)} more for free shipping
-                  </p>
-                )}
-                <button className="w-full py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-colors duration-300">
+                {/* Free Shipping Progress */}
+                <div>
+                  {totalPrice < 45 ? (
+                    <>
+                      <div className="flex justify-between items-center mb-1.5">
+                        <p className="font-body text-xs text-[var(--warm-stone)]">
+                          Add ${(45 - totalPrice).toFixed(2)} more for free shipping
+                        </p>
+                        <span className="font-body text-[10px] text-[var(--warm-stone)]/60">
+                          ${totalPrice.toFixed(0)} / $45
+                        </span>
+                      </div>
+                      <div className="shipping-progress-bar">
+                        <div
+                          className="shipping-progress-fill"
+                          style={{ width: `${Math.min((totalPrice / 45) * 100, 100)}%` }}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <p className="font-body text-xs text-[var(--forest-veil)] flex items-center gap-1.5">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-4 h-4">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      Free shipping unlocked!
+                    </p>
+                  )}
+                </div>
+                <button className="w-full py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] hover:shadow-lg transition-all duration-300 active:scale-[0.98]">
                   Begin Your Ritual
                 </button>
                 <p className="font-body text-[10px] text-[var(--warm-stone)] text-center">
