@@ -15,6 +15,7 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+  image: string;
 }
 
 export interface ToastState {
@@ -24,7 +25,7 @@ export interface ToastState {
 
 interface CartContextType {
   items: CartItem[];
-  addItem: (slug: string, name: string, price: number) => void;
+  addItem: (slug: string, name: string, price: number, image: string) => void;
   removeItem: (slug: string) => void;
   updateQuantity: (slug: string, quantity: number) => void;
   clearCart: () => void;
@@ -100,7 +101,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const addItem = useCallback(
-    (slug: string, name: string, price: number) => {
+    (slug: string, name: string, price: number, image: string) => {
       setItems((prev) => {
         const existing = prev.find((i) => i.slug === slug);
         if (existing) {
@@ -108,7 +109,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
             i.slug === slug ? { ...i, quantity: i.quantity + 1 } : i
           );
         }
-        return [...prev, { slug, name, price, quantity: 1 }];
+        return [...prev, { slug, name, price, quantity: 1, image }];
       });
       // Show toast instead of opening cart drawer
       showToast(name);

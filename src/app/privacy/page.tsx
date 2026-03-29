@@ -7,16 +7,11 @@ export const metadata: Metadata = {
 };
 
 export default function PrivacyPage() {
-  const headingStyle = {
-    fontFamily: "'Cormorant Garamond', Georgia, serif" as const,
-    fontWeight: 600 as const,
-  };
-
   return (
     <LegalPage title="Privacy Policy" lastUpdated="March 28, 2026">
-      <div className="space-y-8 text-[#1A1A1A]/80 text-sm leading-relaxed">
+      <div className="space-y-8 text-[var(--apothecary-black)]/80 text-sm leading-relaxed">
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Introduction
           </h2>
           <p>
@@ -30,7 +25,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Information We Collect
           </h2>
           <p className="mb-3">
@@ -50,7 +45,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             How We Use Your Information
           </h2>
           <p>
@@ -62,7 +57,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             How We Share Your Information
           </h2>
           <p>
@@ -74,7 +69,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Your Privacy Rights
           </h2>
           <p className="mb-3">
@@ -90,7 +85,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Cookies
           </h2>
           <p>
@@ -102,7 +97,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Security
           </h2>
           <p>
@@ -113,7 +108,7 @@ export default function PrivacyPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Contact
           </h2>
           <p>
@@ -123,7 +118,7 @@ export default function PrivacyPage() {
           </p>
         </section>
 
-        <p className="text-[#A89F91] text-xs italic mt-12">
+        <p className="text-[var(--warm-stone)] text-xs italic mt-12">
           This document should be reviewed by a licensed attorney before
           publication.
         </p>

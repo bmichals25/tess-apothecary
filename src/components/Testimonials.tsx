@@ -35,11 +35,8 @@ export default function Testimonials() {
     <section className="bg-[var(--linen)] parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
         <ScrollReveal className="text-center mb-16">
-          <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
-            Voices from the Coven
-          </p>
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
-            From the Coven
+            Voices from the Coven
           </p>
           <h2 className="font-heading text-[var(--apothecary-black)] text-fluid-section font-semibold">
             What Our Community Says

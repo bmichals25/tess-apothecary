@@ -25,22 +25,12 @@ export default function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="bg-[#EDE7DB] p-12 text-center">
-        <p
-          className="text-[#2D4A3E] text-xl mb-2"
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontWeight: 600,
-          }}
-        >
+      <div className="bg-[var(--linen)] p-12 text-center">
+        <p className="font-heading text-[var(--forest-veil)] text-xl font-semibold mb-2">
           Message received
         </p>
-        <p
-          className="text-[#A89F91] text-sm"
-          style={{ fontFamily: "'Karla', sans-serif" }}
-        >
-          We&apos;ll get back to you within 1-2 business days. The kettle&apos;s
-          on while you wait.
+        <p className="font-body text-[var(--warm-stone)] text-sm">
+          We&apos;ll get back to you within 1-2 business days.
         </p>
       </div>
     );
@@ -59,8 +49,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="block text-xs uppercase tracking-[0.08em] text-[#A89F91] mb-2"
-            style={{ fontFamily: "'Karla', sans-serif", fontWeight: 500 }}
+            className="block font-body text-xs uppercase tracking-[0.08em] text-[var(--warm-stone)] font-medium mb-2"
           >
             Name
           </label>
@@ -69,15 +58,13 @@ export default function ContactForm() {
             name="name"
             id="name"
             required
-            className="w-full px-4 py-3 bg-transparent border border-[#A89F91]/40 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#2D4A3E] transition-colors"
-            style={{ fontFamily: "'Karla', sans-serif" }}
+            className="w-full px-4 py-3 bg-transparent border border-[var(--warm-stone)]/40 text-[var(--apothecary-black)] font-body text-sm focus:outline-none focus:border-[var(--forest-veil)] transition-colors"
           />
         </div>
         <div>
           <label
             htmlFor="email"
-            className="block text-xs uppercase tracking-[0.08em] text-[#A89F91] mb-2"
-            style={{ fontFamily: "'Karla', sans-serif", fontWeight: 500 }}
+            className="block font-body text-xs uppercase tracking-[0.08em] text-[var(--warm-stone)] font-medium mb-2"
           >
             Email
           </label>
@@ -86,16 +73,14 @@ export default function ContactForm() {
             name="email"
             id="email"
             required
-            className="w-full px-4 py-3 bg-transparent border border-[#A89F91]/40 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#2D4A3E] transition-colors"
-            style={{ fontFamily: "'Karla', sans-serif" }}
+            className="w-full px-4 py-3 bg-transparent border border-[var(--warm-stone)]/40 text-[var(--apothecary-black)] font-body text-sm focus:outline-none focus:border-[var(--forest-veil)] transition-colors"
           />
         </div>
       </div>
       <div>
         <label
           htmlFor="subject"
-          className="block text-xs uppercase tracking-[0.08em] text-[#A89F91] mb-2"
-          style={{ fontFamily: "'Karla', sans-serif", fontWeight: 500 }}
+          className="block font-body text-xs uppercase tracking-[0.08em] text-[var(--warm-stone)] font-medium mb-2"
         >
           Subject
         </label>
@@ -103,15 +88,13 @@ export default function ContactForm() {
           type="text"
           name="subject"
           id="subject"
-          className="w-full px-4 py-3 bg-transparent border border-[#A89F91]/40 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#2D4A3E] transition-colors"
-          style={{ fontFamily: "'Karla', sans-serif" }}
+          className="w-full px-4 py-3 bg-transparent border border-[var(--warm-stone)]/40 text-[var(--apothecary-black)] font-body text-sm focus:outline-none focus:border-[var(--forest-veil)] transition-colors"
         />
       </div>
       <div>
         <label
           htmlFor="message"
-          className="block text-xs uppercase tracking-[0.08em] text-[#A89F91] mb-2"
-          style={{ fontFamily: "'Karla', sans-serif", fontWeight: 500 }}
+          className="block font-body text-xs uppercase tracking-[0.08em] text-[var(--warm-stone)] font-medium mb-2"
         >
           Message
         </label>
@@ -120,14 +103,12 @@ export default function ContactForm() {
           id="message"
           rows={6}
           required
-          className="w-full px-4 py-3 bg-transparent border border-[#A89F91]/40 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#2D4A3E] transition-colors resize-vertical"
-          style={{ fontFamily: "'Karla', sans-serif" }}
+          className="w-full px-4 py-3 bg-transparent border border-[var(--warm-stone)]/40 text-[var(--apothecary-black)] font-body text-sm focus:outline-none focus:border-[var(--forest-veil)] transition-colors resize-vertical"
         />
       </div>
       <button
         type="submit"
-        className="px-8 py-4 bg-[#2D4A3E] text-[#F5F0E8] text-sm tracking-[0.08em] uppercase hover:bg-[#1A1A1A] transition-colors"
-        style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
+        className="px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.08em] uppercase hover:bg-[var(--apothecary-black)] transition-colors"
       >
         Send Message
       </button>

@@ -54,6 +54,14 @@ export const metadata: Metadata = {
     title: "Tess's Apothecary | Herbal Tea Blends for Ritual & Intention",
     description:
       "Small-batch herbal tea blends crafted for daily ritual and intentional wellness. Every cup is a spell.",
+    images: [
+      {
+        url: "/images/products/mockup-full-collection.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tess's Apothecary herbal tea collection",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",

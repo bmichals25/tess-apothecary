@@ -16,30 +16,18 @@ export const metadata: Metadata = {
 export default function FAQPage() {
   return (
     <div className="pt-20 sm:pt-24">
-      <section className="bg-[#1A1A1A] py-16 px-4">
+      <section className="bg-[var(--apothecary-black)] py-16 px-5 sm:px-8 lg:px-10">
         <div className="max-w-3xl mx-auto text-center">
-          <p
-            className="text-[#C4873B] text-lg mb-2"
-            style={{ fontFamily: "'Caveat', cursive" }}
-          >
+          <p className="font-accent text-[var(--amber-elixir)] text-lg mb-2">
             Help Center
           </p>
-          <h1
-            className="text-[#F5F0E8] text-4xl sm:text-5xl mb-4"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
-          >
+          <h1 className="font-heading text-[var(--parchment)] text-4xl sm:text-5xl font-semibold mb-4">
             Frequently Asked Questions
           </h1>
-          <p
-            className="text-[#A89F91] text-base max-w-xl mx-auto"
-            style={{ fontFamily: "'Karla', sans-serif", lineHeight: 1.65 }}
-          >
+          <p className="font-body text-[var(--warm-stone)] text-base max-w-xl mx-auto leading-relaxed">
             Everything you need to know about our blends, orders, and rituals.
             Can&apos;t find what you&apos;re looking for?{" "}
-            <Link href="/contact" className="text-[#C4873B] hover:underline">
+            <Link href="/contact" className="text-[var(--amber-elixir)] hover:underline">
               Contact us
             </Link>
             .
@@ -47,7 +35,7 @@ export default function FAQPage() {
         </div>
       </section>
 
-      <section className="bg-[#F5F0E8] py-16 px-4">
+      <section className="bg-[var(--parchment)] py-16 px-5 sm:px-8 lg:px-10">
         <div className="max-w-3xl mx-auto">
           <FAQAccordion categories={faqData} />
         </div>

@@ -15,9 +15,6 @@ export default function ProductGrid() {
       <div className="max-w-7xl mx-auto relative z-[2]">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
-          <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
-            The Apothecary Shelf
-          </p>
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Apothecary
           </p>

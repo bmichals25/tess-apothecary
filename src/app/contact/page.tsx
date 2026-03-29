@@ -13,92 +13,63 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <div className="pt-20 sm:pt-24">
-      <section className="bg-[#1A1A1A] py-16 px-4">
+      <section className="bg-[var(--apothecary-black)] py-16 px-5 sm:px-8 lg:px-10">
         <div className="max-w-3xl mx-auto text-center">
-          <p
-            className="text-[#C4873B] text-lg mb-2"
-            style={{ fontFamily: "'Caveat', cursive" }}
-          >
+          <p className="font-accent text-[var(--amber-elixir)] text-lg mb-2">
             Reach Out
           </p>
-          <h1
-            className="text-[#F5F0E8] text-4xl sm:text-5xl mb-4"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
-          >
+          <h1 className="font-heading text-[var(--parchment)] text-4xl sm:text-5xl font-semibold mb-4">
             Contact Us
           </h1>
-          <p
-            className="text-[#A89F91] text-base max-w-xl mx-auto"
-            style={{ fontFamily: "'Karla', sans-serif", lineHeight: 1.65 }}
-          >
+          <p className="font-body text-[var(--warm-stone)] text-base max-w-xl mx-auto leading-relaxed">
             Questions about a blend? Need help with an order? Just want to chat
             about herbs? We&apos;d love to hear from you.
           </p>
         </div>
       </section>
 
-      <section className="bg-[#F5F0E8] py-16 px-4">
+      <section className="bg-[var(--parchment)] py-16 px-5 sm:px-8 lg:px-10">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* Contact Info */}
             <div className="space-y-8">
               <div>
-                <h3
-                  className="text-[#1A1A1A] text-lg mb-2"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                  }}
-                >
+                <h3 className="font-heading text-[var(--apothecary-black)] text-lg font-semibold mb-2">
                   Email
                 </h3>
                 <a
                   href="mailto:support@tessapothecary.com"
-                  className="text-[#2D4A3E] text-sm hover:text-[#C4873B] transition-colors"
-                  style={{ fontFamily: "'Karla', sans-serif" }}
+                  className="font-body text-[var(--forest-veil)] text-sm hover:text-[var(--amber-elixir)] transition-colors"
                 >
                   support@tessapothecary.com
                 </a>
               </div>
               <div>
-                <h3
-                  className="text-[#1A1A1A] text-lg mb-2"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                  }}
-                >
+                <h3 className="font-heading text-[var(--apothecary-black)] text-lg font-semibold mb-2">
                   Response Time
                 </h3>
-                <p
-                  className="text-[#1A1A1A]/80 text-sm"
-                  style={{ fontFamily: "'Karla', sans-serif", lineHeight: 1.65 }}
-                >
+                <p className="font-body text-[var(--apothecary-black)]/80 text-sm leading-relaxed">
                   We respond to all inquiries within 1-2 business days.
                 </p>
               </div>
               <div>
-                <h3
-                  className="text-[#1A1A1A] text-lg mb-2"
-                  style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
-                  }}
-                >
+                <h3 className="font-heading text-[var(--apothecary-black)] text-lg font-semibold mb-2">
                   Follow Us
                 </h3>
                 <div className="flex flex-col gap-2">
-                  {["Instagram", "TikTok", "Pinterest"].map((platform) => (
+                  {[
+                    { name: "Instagram", url: "https://instagram.com/tessapothecary" },
+                    { name: "TikTok", url: "https://tiktok.com/@tessapothecary" },
+                    { name: "Pinterest", url: "https://pinterest.com/tessapothecary" },
+                  ].map((platform) => (
                     <a
-                      key={platform}
-                      href="#"
-                      className="text-[#2D4A3E] text-sm hover:text-[#C4873B] transition-colors"
-                      style={{ fontFamily: "'Karla', sans-serif" }}
+                      key={platform.name}
+                      href={platform.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-body text-[var(--forest-veil)] text-sm hover:text-[var(--amber-elixir)] transition-colors"
                     >
-                      {platform}
+                      {platform.name}
                     </a>
                   ))}
                 </div>

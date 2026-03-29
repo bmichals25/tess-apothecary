@@ -71,7 +71,7 @@ export default function RitualKitFeature() {
             <ScrollReveal delay={0.6}>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={() => addItem("the-ritual-kit", "The Ritual Kit", 58)}
+                  onClick={() => addItem("the-ritual-kit", "The Ritual Kit", 58, "/images/products/mockup-ritual-kit-closed.jpg")}
                   className="btn-glow px-8 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400"
                   aria-label="Add The Ritual Kit to cart - $58.00"
                 >

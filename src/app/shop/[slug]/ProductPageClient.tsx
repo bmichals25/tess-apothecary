@@ -74,7 +74,7 @@ export default function ProductPageClient({
                 </div>
 
                 <button
-                  onClick={() => addItem(product.slug, product.name, product.price)}
+                  onClick={() => addItem(product.slug, product.name, product.price, product.image)}
                   className="btn-glow w-full sm:w-auto px-10 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400 mb-10"
                   aria-label={`Add ${product.name} to cart - $${product.price.toFixed(2)}`}
                 >
@@ -125,31 +125,6 @@ export default function ProductPageClient({
               </div>
             </ScrollReveal>
           </div>
-        </div>
-      </section>
-
-      {/* Reviews */}
-      <section className="bg-[var(--linen)] py-20 px-5">
-        <div className="max-w-4xl mx-auto">
-          <ScrollReveal className="text-center">
-            <h2 className="font-heading text-[var(--apothecary-black)] text-2xl sm:text-3xl font-semibold mb-8">
-              Reviews
-            </h2>
-            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[var(--forest-veil)]/10 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.2} stroke="var(--warm-stone)" className="w-6 h-6" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
-              </svg>
-            </div>
-            <p className="font-heading text-[var(--apothecary-black)] text-base font-semibold mb-1">
-              No reviews yet
-            </p>
-            <p className="font-body text-[var(--warm-stone)] text-sm mb-6">
-              Be the first to share your ritual experience with {product.name}.
-            </p>
-            <button className="px-8 py-3 border border-[var(--forest-veil)] text-[var(--forest-veil)] font-body text-[11px] font-bold tracking-[0.1em] uppercase hover:bg-[var(--forest-veil)] hover:text-[var(--parchment)] transition-all duration-300">
-              Write a Review
-            </button>
-          </ScrollReveal>
         </div>
       </section>
 

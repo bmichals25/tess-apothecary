@@ -40,10 +40,25 @@ export default function Header() {
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
+      // Focus trap: mark main content as inert
+      const mainContent = document.getElementById("main-content");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.setAttribute("inert", "");
+      if (footer) footer.setAttribute("inert", "");
     } else {
       document.body.style.overflow = "";
+      const mainContent = document.getElementById("main-content");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.removeAttribute("inert");
+      if (footer) footer.removeAttribute("inert");
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      const mainContent = document.getElementById("main-content");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.removeAttribute("inert");
+      if (footer) footer.removeAttribute("inert");
+    };
   }, [mobileOpen]);
 
   return (
@@ -206,7 +221,7 @@ export default function Header() {
               className="absolute bottom-10 text-center"
             >
               <p className="font-accent text-[var(--amber-elixir)] text-lg">
-                Every cup is a spell
+                Herbs, ritual &amp; quiet magic
               </p>
             </motion.div>
           </motion.div>

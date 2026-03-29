@@ -7,14 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function ReturnsPage() {
-  const headingStyle = {
-    fontFamily: "'Cormorant Garamond', Georgia, serif" as const,
-    fontWeight: 600 as const,
-  };
-
   return (
     <LegalPage title="Return & Refund Policy" lastUpdated="March 28, 2026">
-      <div className="space-y-8 text-[#1A1A1A]/80 text-sm leading-relaxed">
+      <div className="space-y-8 text-[var(--apothecary-black)]/80 text-sm leading-relaxed">
         <p>
           At Tess&apos;s Apothecary, we want you to love your purchase. Because
           our products are consumable herbal blends, we have specific policies to
@@ -22,7 +17,7 @@ export default function ReturnsPage() {
         </p>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Satisfaction Guarantee
           </h2>
           <p>
@@ -35,7 +30,7 @@ export default function ReturnsPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Damaged or Defective Products
           </h2>
           <p>
@@ -46,7 +41,7 @@ export default function ReturnsPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Unopened Products
           </h2>
           <p>
@@ -59,7 +54,7 @@ export default function ReturnsPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Non-Returnable Items
           </h2>
           <ul className="list-disc pl-5 space-y-1">
@@ -72,7 +67,7 @@ export default function ReturnsPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Refund Timing
           </h2>
           <p>
@@ -84,7 +79,7 @@ export default function ReturnsPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             How to Request a Return
           </h2>
           <p>
@@ -95,7 +90,7 @@ export default function ReturnsPage() {
           </p>
         </section>
 
-        <p className="text-[#A89F91] text-xs italic mt-12">
+        <p className="text-[var(--warm-stone)] text-xs italic mt-12">
           This document should be reviewed by a licensed attorney before
           publication.
         </p>

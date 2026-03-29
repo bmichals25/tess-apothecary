@@ -71,10 +71,10 @@ export default function NewsletterSignup() {
                 className="py-6"
               >
                 <p className="font-heading text-[var(--amber-elixir)] text-xl italic">
-                  Welcome to the Apothecary.
+                  Welcome to the coven.
                 </p>
-                <p className="font-body text-[var(--warm-stone)] text-sm mt-2">
-                  Check your inbox for your 15% off code.
+                <p className="font-body text-[var(--parchment)] text-sm mt-2">
+                  Your 15% off code: <span className="font-bold tracking-wider text-[var(--amber-elixir)]">FIRSTBREW</span>
                 </p>
               </motion.div>
             ) : (

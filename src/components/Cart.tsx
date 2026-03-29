@@ -23,10 +23,31 @@ export default function Cart() {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      // Focus trap: mark main content as inert
+      const mainContent = document.getElementById("main-content");
+      const header = document.querySelector("header");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.setAttribute("inert", "");
+      if (header) header.setAttribute("inert", "");
+      if (footer) footer.setAttribute("inert", "");
     } else {
       document.body.style.overflow = "";
+      const mainContent = document.getElementById("main-content");
+      const header = document.querySelector("header");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.removeAttribute("inert");
+      if (header) header.removeAttribute("inert");
+      if (footer) footer.removeAttribute("inert");
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+      const mainContent = document.getElementById("main-content");
+      const header = document.querySelector("header");
+      const footer = document.querySelector("footer");
+      if (mainContent) mainContent.removeAttribute("inert");
+      if (header) header.removeAttribute("inert");
+      if (footer) footer.removeAttribute("inert");
+    };
   }, [isOpen]);
 
   return (
@@ -112,11 +133,13 @@ export default function Cart() {
                         transition={{ delay: i * 0.05, duration: 0.3 }}
                         className="flex items-start gap-4 py-5 border-b border-[var(--warm-stone)]/15 ledger-item pl-3"
                       >
-                        {/* Swatch */}
-                        <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 bg-[var(--forest-veil)]/10 flex items-center justify-center">
-                          <span className="font-heading text-[var(--forest-veil)] text-xs font-semibold tracking-wide uppercase">
-                            {item.name.split(" ").map(w => w[0]).join("")}
-                          </span>
+                        {/* Product Image */}
+                        <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 rounded-md overflow-hidden bg-[var(--linen)]">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover"
+                          />
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3 className="font-heading text-[var(--apothecary-black)] text-base font-semibold truncate">
@@ -128,7 +151,7 @@ export default function Cart() {
                           <div className="flex items-center gap-2 mt-3">
                             <button
                               onClick={() => updateQuantity(item.slug, item.quantity - 1)}
-                              className="w-8 h-8 flex items-center justify-center border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] hover:bg-[var(--linen)] text-sm transition-colors"
+                              className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] hover:bg-[var(--linen)] text-sm transition-colors"
                               aria-label="Decrease quantity"
                             >
                               &minus;
@@ -138,7 +161,7 @@ export default function Cart() {
                             </span>
                             <button
                               onClick={() => updateQuantity(item.slug, item.quantity + 1)}
-                              className="w-8 h-8 flex items-center justify-center border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] hover:bg-[var(--linen)] text-sm transition-colors"
+                              className="w-11 h-11 min-w-[44px] min-h-[44px] flex items-center justify-center border border-[var(--warm-stone)]/30 text-[var(--apothecary-black)] hover:bg-[var(--linen)] text-sm transition-colors"
                               aria-label="Increase quantity"
                             >
                               +

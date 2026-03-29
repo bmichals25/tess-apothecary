@@ -7,16 +7,11 @@ export const metadata: Metadata = {
 };
 
 export default function ShippingPage() {
-  const headingStyle = {
-    fontFamily: "'Cormorant Garamond', Georgia, serif" as const,
-    fontWeight: 600 as const,
-  };
-
   return (
     <LegalPage title="Shipping Policy" lastUpdated="March 28, 2026">
-      <div className="space-y-8 text-[#1A1A1A]/80 text-sm leading-relaxed">
+      <div className="space-y-8 text-[var(--apothecary-black)]/80 text-sm leading-relaxed">
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Processing Time
           </h2>
           <p>
@@ -27,30 +22,30 @@ export default function ShippingPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Shipping Options
           </h2>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-[#A89F91]/30">
-                  <th className="py-3 pr-4 font-medium text-[#1A1A1A]">Method</th>
-                  <th className="py-3 pr-4 font-medium text-[#1A1A1A]">Estimated Delivery</th>
-                  <th className="py-3 font-medium text-[#1A1A1A]">Cost</th>
+                <tr className="border-b border-[var(--warm-stone)]/30">
+                  <th className="py-3 pr-4 font-medium text-[var(--apothecary-black)]">Method</th>
+                  <th className="py-3 pr-4 font-medium text-[var(--apothecary-black)]">Estimated Delivery</th>
+                  <th className="py-3 font-medium text-[var(--apothecary-black)]">Cost</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-[#A89F91]/20">
+                <tr className="border-b border-[var(--warm-stone)]/20">
                   <td className="py-3 pr-4">Standard (USPS First Class)</td>
                   <td className="py-3 pr-4">3-7 business days</td>
                   <td className="py-3">$4.95</td>
                 </tr>
-                <tr className="border-b border-[#A89F91]/20">
+                <tr className="border-b border-[var(--warm-stone)]/20">
                   <td className="py-3 pr-4">Expedited (USPS Priority)</td>
                   <td className="py-3 pr-4">2-3 business days</td>
                   <td className="py-3">$8.95</td>
                 </tr>
-                <tr className="border-b border-[#A89F91]/20">
+                <tr className="border-b border-[var(--warm-stone)]/20">
                   <td className="py-3 pr-4">Free Standard Shipping</td>
                   <td className="py-3 pr-4">3-7 business days</td>
                   <td className="py-3">Orders over $45</td>
@@ -58,14 +53,14 @@ export default function ShippingPage() {
               </tbody>
             </table>
           </div>
-          <p className="mt-3 text-xs text-[#A89F91]">
+          <p className="mt-3 text-xs text-[var(--warm-stone)]">
             Delivery times are estimates from the date of shipment, not the date
             of order.
           </p>
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Shipping Area
           </h2>
           <p>
@@ -76,7 +71,7 @@ export default function ShippingPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Order Tracking
           </h2>
           <p>
@@ -87,7 +82,7 @@ export default function ShippingPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Gift Orders
           </h2>
           <p>
@@ -98,7 +93,7 @@ export default function ShippingPage() {
         </section>
 
         <section>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             Lost or Damaged Packages
           </h2>
           <p>

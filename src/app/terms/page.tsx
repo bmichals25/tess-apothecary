@@ -8,16 +8,12 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   const sectionStyle = "mb-8";
-  const headingStyle = {
-    fontFamily: "'Cormorant Garamond', Georgia, serif" as const,
-    fontWeight: 600 as const,
-  };
 
   return (
     <LegalPage title="Terms of Service" lastUpdated="March 28, 2026">
-      <div className="space-y-8 text-[#1A1A1A]/80 text-sm leading-relaxed">
+      <div className="space-y-8 text-[var(--apothecary-black)]/80 text-sm leading-relaxed">
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             1. Agreement to Terms
           </h2>
           <p>
@@ -31,7 +27,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             2. Eligibility
           </h2>
           <p>
@@ -43,7 +39,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             3. Products and Descriptions
           </h2>
           <p className="mb-3">
@@ -64,7 +60,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             4. Orders and Payment
           </h2>
           <p className="mb-3">
@@ -80,7 +76,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             5. Shipping
           </h2>
           <p>
@@ -92,7 +88,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             6. Returns and Refunds
           </h2>
           <p>
@@ -102,7 +98,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             7. Intellectual Property
           </h2>
           <p>
@@ -114,7 +110,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             8. Limitation of Liability
           </h2>
           <p>
@@ -126,7 +122,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             9. Dispute Resolution
           </h2>
           <p>
@@ -138,7 +134,7 @@ export default function TermsPage() {
         </section>
 
         <section className={sectionStyle}>
-          <h2 className="text-[#1A1A1A] text-xl mb-3" style={headingStyle}>
+          <h2 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
             10. Contact
           </h2>
           <p>
@@ -147,7 +143,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <p className="text-[#A89F91] text-xs italic mt-12">
+        <p className="text-[var(--warm-stone)] text-xs italic mt-12">
           This document should be reviewed by a licensed attorney before
           publication.
         </p>

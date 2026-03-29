@@ -78,7 +78,7 @@ export default function ProductCard({
             ${product.price.toFixed(2)}
           </span>
           <button
-            onClick={() => addItem(product.slug, product.name, product.price)}
+            onClick={() => addItem(product.slug, product.name, product.price, product.image)}
             className="px-4 sm:px-5 py-3 sm:py-2.5 min-h-[44px] bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-xs sm:text-[11px] font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400 opacity-80 group-hover:opacity-100"
             aria-label={`Add ${product.name} to cart - $${product.price.toFixed(2)}`}
           >

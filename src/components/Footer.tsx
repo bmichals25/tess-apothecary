@@ -41,7 +41,7 @@ export default function Footer() {
               magic of taking care of yourself.
             </p>
             <p className="font-accent text-[var(--amber-elixir)] text-base">
-              Every cup is a spell.
+              Small batches, big intentions.
             </p>
           </div>
 
@@ -101,13 +101,19 @@ export default function Footer() {
               Connect
             </h3>
             <div className="flex gap-6 mb-8">
-              {["Instagram", "TikTok", "Pinterest"].map((platform) => (
+              {[
+                { name: "Instagram", url: "https://instagram.com/tessapothecary" },
+                { name: "TikTok", url: "https://tiktok.com/@tessapothecary" },
+                { name: "Pinterest", url: "https://pinterest.com/tessapothecary" },
+              ].map((platform) => (
                 <a
-                  key={platform}
-                  href="#"
+                  key={platform.name}
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="social-hover font-body text-sm text-[var(--warm-stone)] hover:text-[var(--amber-elixir)]"
                 >
-                  {platform}
+                  {platform.name}
                 </a>
               ))}
             </div>
