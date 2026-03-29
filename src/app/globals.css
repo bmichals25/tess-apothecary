@@ -769,12 +769,12 @@ main {
 /* Animation tied to scroll position — animates continuously as you scroll, no JS */
 
 @keyframes revealUp {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0.3; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes revealCard {
-  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  from { opacity: 0.3; transform: translateY(8px) scale(0.99); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -801,22 +801,22 @@ main {
 /* ─── Additional scroll-driven animation variants ─── */
 
 @keyframes revealLeft {
-  from { opacity: 0; transform: translateX(-40px); }
+  from { opacity: 0.3; transform: translateX(-15px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes revealRight {
-  from { opacity: 0; transform: translateX(40px); }
+  from { opacity: 0.3; transform: translateX(15px); }
   to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes revealScale {
-  from { opacity: 0; transform: scale(0.9); }
+  from { opacity: 0.4; transform: scale(0.96); }
   to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes revealRotate {
-  from { opacity: 0; transform: rotate(-3deg) translateY(20px); }
+  from { opacity: 0.4; transform: rotate(-1.5deg) translateY(8px); }
   to { opacity: 1; transform: rotate(0deg) translateY(0); }
 }
 
@@ -862,7 +862,7 @@ main {
 
 /* Image reveal with clip-path wipe */
 @keyframes revealClip {
-  from { clip-path: inset(0 0 100% 0); opacity: 0; }
+  from { clip-path: inset(0 0 30% 0); opacity: 0.5; }
   to { clip-path: inset(0 0 0 0); opacity: 1; }
 }
 
