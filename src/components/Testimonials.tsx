@@ -1,5 +1,8 @@
 "use client";
 
+import { useReveal } from "@/hooks/useReveal";
+import { useStaggerReveal } from "@/hooks/useStaggerReveal";
+
 const testimonials = [
   {
     quote:
@@ -28,10 +31,13 @@ const testimonials = [
 ];
 
 export default function Testimonials() {
+  const headingRef = useReveal();
+  const cardsRef = useStaggerReveal();
+
   return (
     <section className="bg-[var(--linen)] parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16 reveal-section">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             Voices from the Coven
           </p>
@@ -40,9 +46,9 @@ export default function Testimonials() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div ref={cardsRef} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
-            <div key={i}>
+            <div key={i} className="reveal-card">
               <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-all duration-500 apothecary-label">
                 {/* Large decorative quote mark */}
                 <span className="absolute top-6 left-8 font-heading text-7xl text-[var(--amber-elixir)]/10 leading-none select-none pointer-events-none">

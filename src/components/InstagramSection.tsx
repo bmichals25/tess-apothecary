@@ -1,5 +1,7 @@
 "use client";
 
+import { useReveal } from "@/hooks/useReveal";
+
 const gridItems = [
   { image: "/images/products/mockup-eventide-elixir.jpg", alt: "Eventide Elixir herbal tea blend" },
   { image: "/images/products/mockup-sun-tonic.jpg", alt: "Sun Tonic morning tea blend" },
@@ -8,9 +10,11 @@ const gridItems = [
 ];
 
 export default function InstagramSection() {
+  const revealRef = useReveal();
+
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
-      <div className="max-w-6xl mx-auto relative z-[2]">
+      <div ref={revealRef} className="max-w-6xl mx-auto relative z-[2] reveal-section">
         <div className="text-center mb-12">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             @tessapothecary

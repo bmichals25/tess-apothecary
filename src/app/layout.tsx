@@ -85,6 +85,9 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${karla.variable} ${caveat.variable} h-full antialiased`}
     >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js-loaded')` }} />
+      </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>
           {/* Skip to content link for keyboard/screen-reader users */}

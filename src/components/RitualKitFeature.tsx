@@ -2,14 +2,16 @@
 
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
+import { useReveal } from "@/hooks/useReveal";
 import WaxSeal from "./WaxSeal";
 
 export default function RitualKitFeature() {
   const { addItem } = useCart();
+  const revealRef = useReveal();
 
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
-      <div className="max-w-7xl mx-auto relative z-[2]">
+      <div ref={revealRef} className="max-w-7xl mx-auto relative z-[2] reveal-section">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-16 items-center">
           {/* Image area — larger, asymmetric */}
           <div className="lg:col-span-7">

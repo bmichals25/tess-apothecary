@@ -3,16 +3,20 @@
 import ProductCard from "./ProductCard";
 import { products } from "@/lib/products";
 import Link from "next/link";
+import { useReveal } from "@/hooks/useReveal";
+import { useStaggerReveal } from "@/hooks/useStaggerReveal";
 
 export default function ProductGrid() {
   // Individual blends only (no Ritual Kit — that has its own section)
   const blends = products.filter((p) => p.slug !== "the-ritual-kit");
+  const headingRef = useReveal();
+  const gridRef = useStaggerReveal();
 
   return (
     <section className="bg-[var(--bone)] parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-7xl mx-auto relative z-[2]">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div ref={headingRef} className="text-center mb-16 reveal-section">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Apothecary
           </p>
@@ -26,16 +30,15 @@ export default function ProductGrid() {
         </div>
 
         {/* Bento Grid with CSS stagger animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {blends.map((product, i) => (
             <div
               key={product.slug}
-              className={`animate-fade-in-up ${
+              className={`reveal-card ${
                 i === 0
                   ? "sm:col-span-2 lg:col-span-2"
                   : ""
               }`}
-              style={{ animationDelay: `${i * 0.1}s` }}
             >
               <ProductCard product={product} featured={i === 0} />
             </div>
