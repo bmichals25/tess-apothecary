@@ -9,31 +9,19 @@ export default function LegalPage({
 }) {
   return (
     <div className="pt-20 sm:pt-24">
-      <section className="bg-[#1A1A1A] py-16 px-4">
+      <section className="bg-[var(--apothecary-black)] py-20 px-5">
         <div className="max-w-3xl mx-auto text-center">
-          <h1
-            className="text-[#F5F0E8] text-3xl sm:text-4xl mb-2"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
-          >
+          <h1 className="font-heading text-[var(--parchment)] text-fluid-section font-semibold mb-3">
             {title}
           </h1>
-          <p
-            className="text-[#A89F91] text-sm"
-            style={{ fontFamily: "'Karla', sans-serif" }}
-          >
+          <p className="font-body text-[var(--warm-stone)] text-sm">
             Last Updated: {lastUpdated}
           </p>
         </div>
       </section>
 
-      <section className="bg-[#F5F0E8] py-16 px-4">
-        <div
-          className="max-w-3xl mx-auto prose-legal"
-          style={{ fontFamily: "'Karla', sans-serif" }}
-        >
+      <section className="bg-[var(--parchment)] py-16 sm:py-20 px-5">
+        <div className="max-w-3xl mx-auto prose-legal font-body">
           {children}
         </div>
       </section>

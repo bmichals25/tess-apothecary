@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -13,7 +14,7 @@ export default function HeroSection() {
     if (!ctx) return;
 
     let animFrame: number;
-    let particles: Array<{
+    const particles: Array<{
       x: number;
       y: number;
       size: number;
@@ -21,6 +22,8 @@ export default function HeroSection() {
       speedY: number;
       opacity: number;
       fadeDir: number;
+      wobble: number;
+      wobbleSpeed: number;
     }> = [];
 
     const resize = () => {
@@ -30,16 +33,18 @@ export default function HeroSection() {
     resize();
     window.addEventListener("resize", resize);
 
-    // Create particles
-    for (let i = 0; i < 60; i++) {
+    // Fewer, larger, more organic particles — like embers
+    for (let i = 0; i < 35; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: -Math.random() * 0.5 - 0.1,
-        opacity: Math.random() * 0.4,
+        size: Math.random() * 3 + 1,
+        speedX: (Math.random() - 0.5) * 0.2,
+        speedY: -Math.random() * 0.4 - 0.05,
+        opacity: Math.random() * 0.3,
         fadeDir: Math.random() > 0.5 ? 1 : -1,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: Math.random() * 0.01 + 0.005,
       });
     }
 
@@ -47,25 +52,38 @@ export default function HeroSection() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       for (const p of particles) {
-        p.x += p.speedX;
+        p.wobble += p.wobbleSpeed;
+        p.x += p.speedX + Math.sin(p.wobble) * 0.3;
         p.y += p.speedY;
-        p.opacity += p.fadeDir * 0.003;
+        p.opacity += p.fadeDir * 0.002;
 
-        if (p.opacity >= 0.5) p.fadeDir = -1;
+        if (p.opacity >= 0.4) p.fadeDir = -1;
         if (p.opacity <= 0) {
           p.fadeDir = 1;
           p.opacity = 0;
-          p.y = canvas.height + 10;
+          p.y = canvas.height + 20;
           p.x = Math.random() * canvas.width;
         }
-        if (p.y < -10) {
-          p.y = canvas.height + 10;
+        if (p.y < -20) {
+          p.y = canvas.height + 20;
           p.x = Math.random() * canvas.width;
         }
 
+        // Draw with a soft glow
+        const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.size * 3);
+        gradient.addColorStop(0, `rgba(196, 135, 59, ${p.opacity})`);
+        gradient.addColorStop(0.5, `rgba(212, 168, 67, ${p.opacity * 0.5})`);
+        gradient.addColorStop(1, `rgba(196, 135, 59, 0)`);
+
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(196, 135, 59, ${p.opacity})`;
+        ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        // Inner bright core
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size * 0.5, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(245, 240, 232, ${p.opacity * 0.6})`;
         ctx.fill();
       }
 
@@ -80,14 +98,62 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#1A1A1A]">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--apothecary-black)]">
       {/* Animated gradient background */}
       <div className="absolute inset-0 hero-gradient" />
 
       {/* Fog / mist layers */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0">
         <div className="absolute inset-0 fog-layer-1" />
         <div className="absolute inset-0 fog-layer-2" />
+        <div className="absolute inset-0 fog-layer-3" />
+      </div>
+
+      {/* Floating botanical SVGs */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        {/* Top left botanical */}
+        <svg
+          className="absolute top-[15%] left-[8%] w-32 h-32 opacity-[0.06] float-slow"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="var(--parchment)"
+          strokeWidth="0.5"
+        >
+          <path d="M50 90 Q50 50 30 30 Q50 40 50 10 Q50 40 70 30 Q50 50 50 90Z" />
+          <path d="M40 60 Q30 50 20 55" />
+          <path d="M60 60 Q70 50 80 55" />
+        </svg>
+
+        {/* Right botanical */}
+        <svg
+          className="absolute top-[30%] right-[10%] w-40 h-40 opacity-[0.05] float-medium"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="var(--parchment)"
+          strokeWidth="0.4"
+        >
+          <circle cx="50" cy="30" r="15" />
+          <circle cx="50" cy="30" r="25" />
+          <line x1="50" y1="45" x2="50" y2="90" />
+          <ellipse cx="35" cy="65" rx="12" ry="5" transform="rotate(-40, 35, 65)" />
+          <ellipse cx="65" cy="60" rx="10" ry="4" transform="rotate(35, 65, 60)" />
+        </svg>
+
+        {/* Bottom botanical */}
+        <svg
+          className="absolute bottom-[20%] left-[15%] w-28 h-28 opacity-[0.04] float-medium"
+          viewBox="0 0 100 100"
+          fill="none"
+          stroke="var(--parchment)"
+          strokeWidth="0.5"
+        >
+          <path d="M50 80 C50 60 30 50 20 30" />
+          <path d="M50 80 C50 60 70 50 80 30" />
+          <path d="M50 80 C50 50 50 30 50 10" />
+          <circle cx="20" cy="28" r="5" />
+          <circle cx="80" cy="28" r="5" />
+          <circle cx="50" cy="8" r="5" />
+        </svg>
       </div>
 
       {/* Floating particles canvas */}
@@ -98,71 +164,94 @@ export default function HeroSection() {
       />
 
       {/* Candlelight flicker */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[300px] h-[300px] rounded-full candle-glow pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full candle-glow pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-4 max-w-3xl mx-auto">
-        <p
-          className="text-[#C4873B] text-lg sm:text-xl mb-4 hero-fade-in"
-          style={{ fontFamily: "'Caveat', cursive", animationDelay: "0.2s" }}
+      <div className="relative z-10 text-center px-5 max-w-4xl mx-auto">
+        {/* Product category -- instantly tells visitor what we sell */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.8 }}
+          className="font-body text-[var(--parchment)]/60 text-xs sm:text-sm tracking-[0.2em] uppercase mb-6"
         >
-          Welcome to the Apothecary
-        </p>
-        <h1
-          className="text-[#F5F0E8] text-4xl sm:text-5xl md:text-7xl leading-[1.1] mb-6 hero-fade-in"
-          style={{
-            fontFamily: "'Cormorant Garamond', Georgia, serif",
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            animationDelay: "0.5s",
-          }}
+          Small-Batch Herbal Tea Blends
+        </motion.p>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 1, ease: [0.25, 0.8, 0.25, 1] }}
+          className="font-heading text-[var(--parchment)] text-fluid-hero font-semibold mb-4"
         >
           Brewed with
           <br />
-          Intention
-        </h1>
-        <p
-          className="text-[#A89F91] text-base sm:text-lg max-w-xl mx-auto mb-8 hero-fade-in"
-          style={{
-            fontFamily: "'Karla', sans-serif",
-            lineHeight: 1.65,
-            animationDelay: "0.8s",
-          }}
+          <span className="italic">Intention</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+          className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-6"
         >
-          Small-batch herbal tea blends crafted for daily ritual and intentional
-          wellness. Where herbalism meets modern mysticism.
-        </p>
-        <div
-          className="flex flex-col sm:flex-row gap-4 justify-center hero-fade-in"
-          style={{ animationDelay: "1.1s" }}
+          Every cup is a spell
+        </motion.p>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="font-body text-[var(--warm-stone)] text-base sm:text-lg max-w-lg mx-auto mb-10 leading-relaxed"
+        >
+          Five organic herbal blends crafted for daily ritual.
+          From morning energy to evening calm.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
             href="/shop"
-            className="px-8 py-4 bg-[#2D4A3E] text-[#F5F0E8] text-sm tracking-[0.08em] uppercase hover:bg-[#C4873B] transition-colors"
-            style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
+            className="btn-glow px-10 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--amber-elixir)] transition-all duration-500"
           >
             Shop the Collection
           </Link>
           <Link
             href="/about"
-            className="px-8 py-4 border border-[#A89F91]/40 text-[#F5F0E8] text-sm tracking-[0.08em] uppercase hover:border-[#C4873B] hover:text-[#C4873B] transition-colors"
-            style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
+            className="px-10 py-4 border border-[var(--warm-stone)]/30 text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:border-[var(--amber-elixir)] hover:text-[var(--amber-elixir)] transition-all duration-400"
           >
             Our Story
           </Link>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 hero-fade-in" style={{ animationDelay: "1.5s" }}>
-        <span
-          className="text-[#A89F91]/60 text-xs tracking-[0.1em] uppercase"
-          style={{ fontFamily: "'Karla', sans-serif" }}
-        >
-          Scroll
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3"
+      >
+        <span className="font-body text-[var(--warm-stone)]/50 text-[11px] tracking-[0.15em] uppercase">
+          Scroll to discover
         </span>
-        <div className="w-px h-8 bg-gradient-to-b from-[#A89F91]/60 to-transparent" />
-      </div>
+        <div className="scroll-indicator">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="rgba(140, 126, 110, 0.4)"
+            strokeWidth="1.5"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+      </motion.div>
     </section>
   );
 }

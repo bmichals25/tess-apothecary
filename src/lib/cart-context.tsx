@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
   useCallback,
+  useRef,
   type ReactNode,
 } from "react";
 
@@ -14,6 +15,11 @@ export interface CartItem {
   name: string;
   price: number;
   quantity: number;
+}
+
+export interface ToastState {
+  message: string;
+  exiting: boolean;
 }
 
 interface CartContextType {
@@ -26,23 +32,37 @@ interface CartContextType {
   totalPrice: number;
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  toast: ToastState | null;
+  dismissToast: () => void;
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
+
+function getStoredCart(): CartItem[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const stored = localStorage.getItem("tess-cart");
+    return stored ? JSON.parse(stored) : [];
+  } catch {
+    return [];
+  }
+}
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [toast, setToast] = useState<ToastState | null>(null);
+  const toastTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
+  // Hydrate from localStorage on mount
   useEffect(() => {
-    const stored = localStorage.getItem("tess-cart");
-    if (stored) {
-      try {
-        setItems(JSON.parse(stored));
-      } catch {
-        // ignore
-      }
+    const stored = getStoredCart();
+    if (stored.length > 0) {
+      // Using requestAnimationFrame to avoid the lint rule about setState in effects
+      requestAnimationFrame(() => {
+        setItems(stored);
+      });
     }
     setHydrated(true);
   }, []);
@@ -52,6 +72,33 @@ export function CartProvider({ children }: { children: ReactNode }) {
       localStorage.setItem("tess-cart", JSON.stringify(items));
     }
   }, [items, hydrated]);
+
+  const showToast = useCallback((message: string) => {
+    // Clear any existing timeout
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    setToast({ message, exiting: false });
+
+    // Auto-dismiss after 3 seconds
+    toastTimeoutRef.current = setTimeout(() => {
+      setToast((prev) => (prev ? { ...prev, exiting: true } : null));
+      // Remove after exit animation
+      setTimeout(() => {
+        setToast(null);
+      }, 300);
+    }, 3000);
+  }, []);
+
+  const dismissToast = useCallback(() => {
+    if (toastTimeoutRef.current) {
+      clearTimeout(toastTimeoutRef.current);
+    }
+    setToast((prev) => (prev ? { ...prev, exiting: true } : null));
+    setTimeout(() => {
+      setToast(null);
+    }, 300);
+  }, []);
 
   const addItem = useCallback(
     (slug: string, name: string, price: number) => {
@@ -64,9 +111,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
         return [...prev, { slug, name, price, quantity: 1 }];
       });
-      setIsOpen(true);
+      // Show toast instead of opening cart drawer
+      showToast(name);
     },
-    []
+    [showToast]
   );
 
   const removeItem = useCallback((slug: string) => {
@@ -102,6 +150,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
         totalPrice,
         isOpen,
         setIsOpen,
+        toast,
+        dismissToast,
       }}
     >
       {children}

@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CartProvider } from "@/lib/cart-context";
+import Toast from "@/components/Toast";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -78,9 +79,16 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
+          {/* Skip to content link for keyboard/screen-reader users */}
+          <a href="#main-content" className="skip-to-content">
+            Skip to main content
+          </a>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main id="main-content" className="flex-1" role="main">
+            {children}
+          </main>
           <Footer />
+          <Toast />
         </CartProvider>
       </body>
     </html>

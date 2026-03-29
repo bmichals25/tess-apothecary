@@ -2,50 +2,34 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1A1A1A] text-[#F5F0E8]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
-          {/* Brand */}
-          <div className="md:col-span-1">
-            <div className="mb-4">
-              <span
-                className="text-2xl block leading-tight"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontWeight: 600,
-                  letterSpacing: "-0.02em",
-                }}
-              >
+    <footer className="bg-[var(--apothecary-black)] text-[var(--parchment)]" role="contentinfo">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10 py-20">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
+          {/* Brand Column */}
+          <div className="md:col-span-4">
+            <div className="mb-6">
+              <span className="font-heading text-2xl block leading-tight font-semibold tracking-tight">
                 Tess&apos;s
               </span>
-              <span
-                className="text-xs tracking-[0.12em] uppercase text-[#A89F91]"
-                style={{
-                  fontFamily: "'Karla', sans-serif",
-                  fontWeight: 500,
-                }}
-              >
+              <span className="font-body text-xs tracking-[0.14em] uppercase text-[var(--warm-stone)] font-medium">
                 Apothecary
               </span>
             </div>
-            <p
-              className="text-sm text-[#A89F91] leading-relaxed max-w-xs"
-              style={{ fontFamily: "'Karla', sans-serif" }}
-            >
+            <p className="font-body text-sm text-[var(--warm-stone)] leading-relaxed max-w-xs mb-8">
               Handcrafted herbal blends for intention, ritual, and the quiet
-              magic of taking care of yourself. Every cup is a spell.
+              magic of taking care of yourself.
+            </p>
+            <p className="font-accent text-[var(--amber-elixir)] text-base">
+              Every cup is a spell.
             </p>
           </div>
 
           {/* Shop */}
-          <div>
-            <h3
-              className="text-sm uppercase tracking-[0.08em] text-[#C4873B] mb-4"
-              style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
-            >
+          <div className="md:col-span-2">
+            <h3 className="font-body text-[11px] uppercase tracking-[0.12em] text-[var(--amber-elixir)] mb-5 font-bold">
               Shop
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 "Eventide Elixir",
                 "Sun Tonic",
@@ -57,8 +41,7 @@ export default function Footer() {
                 <li key={name}>
                   <Link
                     href={`/shop/${name.toLowerCase().replace(/\s+/g, "-").replace(/'/g, "")}`}
-                    className="text-sm text-[#A89F91] hover:text-[#F5F0E8] transition-colors"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
+                    className="font-body text-sm text-[var(--warm-stone)] hover:text-[var(--parchment)] transition-colors duration-300"
                   >
                     {name}
                   </Link>
@@ -68,14 +51,11 @@ export default function Footer() {
           </div>
 
           {/* Help */}
-          <div>
-            <h3
-              className="text-sm uppercase tracking-[0.08em] text-[#C4873B] mb-4"
-              style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
-            >
+          <div className="md:col-span-2">
+            <h3 className="font-body text-[11px] uppercase tracking-[0.12em] text-[var(--amber-elixir)] mb-5 font-bold">
               Help
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {[
                 { href: "/faq", label: "FAQ" },
                 { href: "/contact", label: "Contact Us" },
@@ -85,8 +65,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#A89F91] hover:text-[#F5F0E8] transition-colors"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
+                    className="font-body text-sm text-[var(--warm-stone)] hover:text-[var(--parchment)] transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
@@ -96,14 +75,26 @@ export default function Footer() {
           </div>
 
           {/* Legal + Social */}
-          <div>
-            <h3
-              className="text-sm uppercase tracking-[0.08em] text-[#C4873B] mb-4"
-              style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
-            >
+          <div className="md:col-span-4">
+            <h3 className="font-body text-[11px] uppercase tracking-[0.12em] text-[var(--amber-elixir)] mb-5 font-bold">
+              Connect
+            </h3>
+            <div className="flex gap-6 mb-8">
+              {["Instagram", "TikTok", "Pinterest"].map((platform) => (
+                <a
+                  key={platform}
+                  href="#"
+                  className="font-body text-sm text-[var(--warm-stone)] hover:text-[var(--parchment)] transition-colors duration-300"
+                >
+                  {platform}
+                </a>
+              ))}
+            </div>
+
+            <h3 className="font-body text-[11px] uppercase tracking-[0.12em] text-[var(--amber-elixir)] mb-5 font-bold">
               Legal
             </h3>
-            <ul className="space-y-2 mb-6">
+            <ul className="space-y-3">
               {[
                 { href: "/terms", label: "Terms of Service" },
                 { href: "/privacy", label: "Privacy Policy" },
@@ -111,48 +102,22 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-[#A89F91] hover:text-[#F5F0E8] transition-colors"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
+                    className="font-body text-sm text-[var(--warm-stone)] hover:text-[var(--parchment)] transition-colors duration-300"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-            <h3
-              className="text-sm uppercase tracking-[0.08em] text-[#C4873B] mb-4"
-              style={{ fontFamily: "'Karla', sans-serif", fontWeight: 700 }}
-            >
-              Follow
-            </h3>
-            <div className="flex gap-4">
-              {["Instagram", "TikTok", "Pinterest"].map((platform) => (
-                <a
-                  key={platform}
-                  href="#"
-                  className="text-sm text-[#A89F91] hover:text-[#F5F0E8] transition-colors"
-                  style={{ fontFamily: "'Karla', sans-serif" }}
-                >
-                  {platform}
-                </a>
-              ))}
-            </div>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="mt-12 pt-8 border-t border-[#A89F91]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p
-            className="text-xs text-[#A89F91]"
-            style={{ fontFamily: "'Karla', sans-serif" }}
-          >
-            &copy; {new Date().getFullYear()} Tess&apos;s Apothecary LLC. All rights
-            reserved.
+        <div className="mt-16 pt-8 border-t border-[var(--warm-stone)]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="font-body text-xs text-[var(--warm-stone)]/60">
+            &copy; {new Date().getFullYear()} Tess&apos;s Apothecary LLC. All rights reserved.
           </p>
-          <p
-            className="text-xs text-[#A89F91]/60"
-            style={{ fontFamily: "'Caveat', cursive" }}
-          >
+          <p className="font-accent text-sm text-[var(--warm-stone)]/40">
             Brewed with intention
           </p>
         </div>

@@ -1,3 +1,8 @@
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+import { StaggerContainer, StaggerItem } from "./ScrollReveal";
+
 const testimonials = [
   {
     quote:
@@ -27,69 +32,53 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-[#EDE7DB] py-20 px-4">
+    <section className="bg-[var(--linen)] py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p
-            className="text-[#C4873B] text-lg mb-2"
-            style={{ fontFamily: "'Caveat', cursive" }}
-          >
+        <ScrollReveal className="text-center mb-16">
+          <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Coven
           </p>
-          <h2
-            className="text-[#1A1A1A] text-3xl sm:text-4xl"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
-          >
+          <h2 className="font-heading text-[var(--apothecary-black)] text-fluid-section font-semibold">
             What Our Community Says
           </h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        </ScrollReveal>
+
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.15}>
           {testimonials.map((t, i) => (
-            <div key={i} className="bg-[#F5F0E8] p-8 relative">
-              {/* Quote mark */}
-              <span
-                className="absolute top-4 left-6 text-5xl text-[#C4873B]/20 leading-none"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                }}
-              >
-                &ldquo;
-              </span>
-              <blockquote
-                className="text-[#1A1A1A] text-base leading-relaxed mb-6 relative z-10 pt-6"
-                style={{
-                  fontFamily: "'Karla', sans-serif",
-                  lineHeight: 1.65,
-                }}
-              >
-                {t.quote}
-              </blockquote>
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-[#2D4A3E]/20" />
-                <div>
-                  <p
-                    className="text-[#1A1A1A] text-sm"
-                    style={{
-                      fontFamily: "'Karla', sans-serif",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {t.author}
-                  </p>
-                  <p
-                    className="text-[#A89F91] text-xs"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
-                  >
-                    on {t.blend}
-                  </p>
+            <StaggerItem key={i}>
+              <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-shadow duration-500">
+                {/* Large decorative quote mark */}
+                <span className="absolute top-6 left-8 font-heading text-7xl text-[var(--amber-elixir)]/10 leading-none select-none pointer-events-none">
+                  &ldquo;
+                </span>
+
+                <blockquote className="font-body text-[var(--apothecary-black)] text-base leading-[1.8] mb-8 relative z-10 pt-8">
+                  {t.quote}
+                </blockquote>
+
+                <div className="flex items-center gap-4">
+                  {/* Avatar placeholder with blend color */}
+                  <div className="w-10 h-10 rounded-full bg-[var(--forest-veil)]/15 flex items-center justify-center">
+                    <span className="font-heading text-[var(--forest-veil)] text-sm font-semibold">
+                      {t.author.charAt(0)}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-body text-[var(--apothecary-black)] text-sm font-bold">
+                      {t.author}
+                    </p>
+                    <p className="font-accent text-[var(--amber-elixir)] text-sm">
+                      on {t.blend}
+                    </p>
+                  </div>
                 </div>
+
+                {/* Decorative bottom line */}
+                <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[var(--amber-elixir)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

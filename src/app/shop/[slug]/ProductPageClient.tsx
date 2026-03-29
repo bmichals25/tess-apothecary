@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import ProductCard from "@/components/ProductCard";
+import ScrollReveal from "@/components/ScrollReveal";
+import { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import type { Product } from "@/lib/products";
 
 export default function ProductPageClient({
@@ -17,313 +19,184 @@ export default function ProductPageClient({
   return (
     <div className="pt-20 sm:pt-24">
       {/* Breadcrumb */}
-      <div className="bg-[#F5F0E8] px-4 py-3">
+      <div className="bg-[var(--parchment)] px-5 py-4">
         <div className="max-w-7xl mx-auto">
-          <nav
-            className="text-xs text-[#A89F91]"
-            style={{ fontFamily: "'Karla', sans-serif" }}
-          >
-            <Link href="/" className="hover:text-[#2D4A3E]">
+          <nav className="font-body text-xs text-[var(--warm-stone)]" aria-label="Breadcrumb">
+            <Link href="/" className="hover:text-[var(--forest-veil)] transition-colors">
               Home
             </Link>{" "}
             /{" "}
-            <Link href="/shop" className="hover:text-[#2D4A3E]">
+            <Link href="/shop" className="hover:text-[var(--forest-veil)] transition-colors">
               Shop
             </Link>{" "}
-            / <span className="text-[#1A1A1A]">{product.name}</span>
+            / <span className="text-[var(--apothecary-black)]">{product.name}</span>
           </nav>
         </div>
       </div>
 
       {/* Product Detail */}
-      <section className="bg-[#F5F0E8] py-12 px-4">
+      <section className="bg-[var(--parchment)] py-12 sm:py-16 px-5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
             {/* Product Image */}
-            <div className="relative aspect-square overflow-hidden">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: `linear-gradient(135deg, ${product.gradientFrom} 0%, ${product.accentColor} 50%, ${product.gradientTo} 100%)`,
-                }}
-              />
-              <div className="absolute inset-0 opacity-10">
-                <svg
-                  viewBox="0 0 400 400"
-                  className="w-full h-full"
-                  preserveAspectRatio="xMidYMid slice"
-                >
-                  <circle
-                    cx="200"
-                    cy="150"
-                    r="80"
-                    fill="none"
-                    stroke="#F5F0E8"
-                    strokeWidth="0.5"
-                  />
-                  <circle
-                    cx="200"
-                    cy="150"
-                    r="120"
-                    fill="none"
-                    stroke="#F5F0E8"
-                    strokeWidth="0.3"
-                  />
-                  <line
-                    x1="200"
-                    y1="230"
-                    x2="200"
-                    y2="380"
-                    stroke="#F5F0E8"
-                    strokeWidth="0.5"
-                  />
-                  <ellipse
-                    cx="160"
-                    cy="300"
-                    rx="40"
-                    ry="15"
-                    fill="none"
-                    stroke="#F5F0E8"
-                    strokeWidth="0.5"
-                    transform="rotate(-30, 160, 300)"
-                  />
-                  <ellipse
-                    cx="240"
-                    cy="280"
-                    rx="35"
-                    ry="12"
-                    fill="none"
-                    stroke="#F5F0E8"
-                    strokeWidth="0.5"
-                    transform="rotate(25, 240, 280)"
-                  />
-                </svg>
-              </div>
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                <span className="text-[#F5F0E8]/60 text-6xl mb-4">
-                  {product.iconEmoji}
-                </span>
-                <span
-                  className="text-[#F5F0E8] text-4xl"
+            <ScrollReveal direction="left">
+              <div className="relative aspect-square overflow-hidden">
+                <div
+                  className="absolute inset-0"
                   style={{
-                    fontFamily: "'Cormorant Garamond', Georgia, serif",
-                    fontWeight: 600,
+                    background: `linear-gradient(145deg, ${product.gradientFrom} 0%, ${product.accentColor} 50%, ${product.gradientTo} 100%)`,
                   }}
-                >
-                  {product.name}
-                </span>
+                />
+                <div className="absolute inset-0 opacity-[0.06]">
+                  <svg
+                    viewBox="0 0 400 400"
+                    className="w-full h-full"
+                    preserveAspectRatio="xMidYMid slice"
+                    fill="none"
+                    stroke="var(--parchment)"
+                    strokeWidth="0.5"
+                  >
+                    <circle cx="200" cy="150" r="60" />
+                    <circle cx="200" cy="150" r="100" />
+                    <circle cx="200" cy="150" r="140" />
+                    <line x1="200" y1="250" x2="200" y2="380" />
+                    <path d="M200 290 Q160 270 140 285" />
+                    <path d="M200 320 Q240 300 260 315" />
+                  </svg>
+                </div>
+                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
+                  <span className="text-[var(--parchment)]/40 text-7xl mb-4">
+                    {product.iconEmoji}
+                  </span>
+                  <span className="font-heading text-[var(--parchment)] text-4xl sm:text-5xl font-semibold">
+                    {product.name}
+                  </span>
+                </div>
               </div>
-            </div>
+            </ScrollReveal>
 
             {/* Product Info */}
-            <div className="flex flex-col">
-              <span
-                className="text-[#A89F91] text-xs tracking-[0.08em] uppercase mb-2"
-                style={{
-                  fontFamily: "'Karla', sans-serif",
-                  fontWeight: 500,
-                }}
-              >
-                {product.category}
-              </span>
-              <h1
-                className="text-[#1A1A1A] text-3xl sm:text-4xl mb-2"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontWeight: 600,
-                }}
-              >
-                {product.name}
-              </h1>
-              <p
-                className="text-[#C4873B] text-sm mb-4"
-                style={{ fontFamily: "'Caveat', cursive", fontSize: "1.1rem" }}
-              >
-                {product.tagline}
-              </p>
-              <p
-                className="text-[#1A1A1A] text-2xl mb-6"
-                style={{
-                  fontFamily: "'Cormorant Garamond', Georgia, serif",
-                  fontWeight: 700,
-                }}
-              >
-                ${product.price.toFixed(2)}
-              </p>
+            <ScrollReveal delay={0.2}>
+              <div className="flex flex-col">
+                <span className="font-body text-[var(--warm-stone)] text-[11px] tracking-[0.12em] uppercase font-bold mb-3">
+                  {product.category}
+                </span>
+                <h1 className="font-heading text-[var(--apothecary-black)] text-fluid-display font-semibold mb-3">
+                  {product.name}
+                </h1>
+                <p className="font-accent text-[var(--amber-elixir)] text-lg mb-5">
+                  {product.tagline}
+                </p>
+                <p className="font-heading text-[var(--apothecary-black)] text-3xl font-bold mb-8">
+                  ${product.price.toFixed(2)}
+                </p>
 
-              {/* Description */}
-              <div className="mb-8">
-                {product.description.split("\n\n").map((para, i) => (
-                  <p
-                    key={i}
-                    className="text-[#1A1A1A]/80 text-sm mb-3"
-                    style={{
-                      fontFamily: "'Karla', sans-serif",
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {para}
-                  </p>
-                ))}
-              </div>
-
-              {/* Add to Cart */}
-              <button
-                onClick={() =>
-                  addItem(product.slug, product.name, product.price)
-                }
-                className="w-full sm:w-auto px-8 py-4 bg-[#2D4A3E] text-[#F5F0E8] text-sm tracking-[0.08em] uppercase hover:bg-[#1A1A1A] transition-colors mb-8"
-                style={{
-                  fontFamily: "'Karla', sans-serif",
-                  fontWeight: 700,
-                }}
-              >
-                Add to Cart &mdash; ${product.price.toFixed(2)}
-              </button>
-
-              {/* Details */}
-              <div className="space-y-6 border-t border-[#A89F91]/30 pt-6">
-                {/* Ingredients */}
-                <div>
-                  <h3
-                    className="text-[#1A1A1A] text-lg mb-2"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Ingredients
-                  </h3>
-                  <p
-                    className="text-[#1A1A1A]/80 text-sm"
-                    style={{
-                      fontFamily: "'Karla', sans-serif",
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    {product.ingredientDetails}
-                  </p>
+                <div className="mb-8">
+                  {product.description.split("\n\n").map((para, i) => (
+                    <p key={i} className="font-body text-[var(--apothecary-black)]/75 text-[15px] mb-4 leading-[1.8]">
+                      {para}
+                    </p>
+                  ))}
                 </div>
 
-                {/* Brewing Ritual */}
-                <div>
-                  <h3
-                    className="text-[#1A1A1A] text-lg mb-2"
-                    style={{
-                      fontFamily: "'Cormorant Garamond', Georgia, serif",
-                      fontWeight: 600,
-                    }}
-                  >
-                    Brewing Ritual
-                  </h3>
-                  <div
-                    className="text-[#1A1A1A]/80 text-sm space-y-1"
-                    style={{
-                      fontFamily: "'Karla', sans-serif",
-                      lineHeight: 1.65,
-                    }}
-                  >
-                    <p>
-                      <strong>Water:</strong> {product.waterTemp}
+                <button
+                  onClick={() => addItem(product.slug, product.name, product.price)}
+                  className="btn-glow w-full sm:w-auto px-10 py-4 bg-[var(--forest-veil)] text-[var(--parchment)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--apothecary-black)] transition-all duration-400 mb-10"
+                  aria-label={`Add ${product.name} to cart - $${product.price.toFixed(2)}`}
+                >
+                  Add to Cart &mdash; ${product.price.toFixed(2)}
+                </button>
+
+                <div className="space-y-8 border-t border-[var(--warm-stone)]/20 pt-8">
+                  <div>
+                    <h3 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
+                      Ingredients
+                    </h3>
+                    <p className="font-body text-[var(--apothecary-black)]/70 text-sm leading-relaxed">
+                      {product.ingredientDetails}
                     </p>
-                    <p>
-                      <strong>Steep:</strong> {product.steepTime}
-                    </p>
-                    <p>
-                      <strong>Best with:</strong> {product.bestWith}
-                    </p>
-                    <p>
-                      <strong>Caffeine:</strong> {product.caffeine}
-                    </p>
-                    <p className="mt-2 text-[#A89F91] text-xs">
-                      Use 1 tablespoon per 8 oz of water. Cover while steeping.
-                      Use filtered water for the cleanest flavor.
-                    </p>
+                  </div>
+
+                  <div>
+                    <h3 className="font-heading text-[var(--apothecary-black)] text-xl font-semibold mb-3">
+                      Brewing Ritual
+                    </h3>
+                    <div className="font-body text-[var(--apothecary-black)]/70 text-sm space-y-2 leading-relaxed">
+                      <p><strong className="text-[var(--apothecary-black)]">Water:</strong> {product.waterTemp}</p>
+                      <p><strong className="text-[var(--apothecary-black)]">Steep:</strong> {product.steepTime}</p>
+                      <p><strong className="text-[var(--apothecary-black)]">Best with:</strong> {product.bestWith}</p>
+                      <p><strong className="text-[var(--apothecary-black)]">Caffeine:</strong> {product.caffeine}</p>
+                      <p className="mt-3 text-[var(--warm-stone)] text-xs">
+                        Use 1 tablespoon per 8 oz of water. Cover while steeping. Use filtered water for the cleanest flavor.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="font-body text-[var(--warm-stone)] text-[11px] tracking-[0.06em] px-3 py-1.5 border border-[var(--warm-stone)]/25">
+                      {product.caffeine}
+                    </span>
+                    <span className="font-body text-[var(--warm-stone)] text-[11px] tracking-[0.06em] px-3 py-1.5 border border-[var(--warm-stone)]/25">
+                      2 oz / 20-25 cups
+                    </span>
+                    <span className="font-body text-[var(--warm-stone)] text-[11px] tracking-[0.06em] px-3 py-1.5 border border-[var(--warm-stone)]/25">
+                      Organic
+                    </span>
                   </div>
                 </div>
 
-                {/* Caffeine */}
-                <div className="flex items-center gap-2 text-xs text-[#A89F91]">
-                  <span
-                    className="px-2 py-1 border border-[#A89F91]/30"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
-                  >
-                    {product.caffeine}
-                  </span>
-                  <span
-                    className="px-2 py-1 border border-[#A89F91]/30"
-                    style={{ fontFamily: "'Karla', sans-serif" }}
-                  >
-                    2 oz / 20-25 cups
-                  </span>
-                </div>
+                <p className="font-body text-[var(--warm-stone)] text-[10px] mt-8 leading-relaxed">
+                  *These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
+                </p>
               </div>
-
-              {/* FDA Disclaimer */}
-              <p
-                className="text-[#A89F91] text-[10px] mt-6 leading-relaxed"
-                style={{ fontFamily: "'Karla', sans-serif" }}
-              >
-                *These statements have not been evaluated by the Food and Drug
-                Administration. This product is not intended to diagnose, treat,
-                cure, or prevent any disease.
-              </p>
-            </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Reviews Placeholder */}
-      <section className="bg-[#EDE7DB] py-16 px-4">
+      {/* Reviews */}
+      <section className="bg-[var(--linen)] py-20 px-5">
         <div className="max-w-4xl mx-auto">
-          <h2
-            className="text-[#1A1A1A] text-2xl mb-8 text-center"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
-          >
-            Reviews
-          </h2>
-          <div className="text-center py-8">
-            <p
-              className="text-[#A89F91] text-sm italic"
-              style={{
-                fontFamily: "'Cormorant Garamond', Georgia, serif",
-              }}
-            >
+          <ScrollReveal className="text-center">
+            <h2 className="font-heading text-[var(--apothecary-black)] text-2xl sm:text-3xl font-semibold mb-8">
+              Reviews
+            </h2>
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[var(--forest-veil)]/10 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.2} stroke="var(--warm-stone)" className="w-6 h-6" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+              </svg>
+            </div>
+            <p className="font-heading text-[var(--apothecary-black)] text-base font-semibold mb-1">
+              No reviews yet
+            </p>
+            <p className="font-body text-[var(--warm-stone)] text-sm mb-6">
               Be the first to share your ritual experience with {product.name}.
             </p>
-            <button
-              className="mt-4 px-6 py-3 border border-[#2D4A3E] text-[#2D4A3E] text-xs tracking-[0.08em] uppercase hover:bg-[#2D4A3E] hover:text-[#F5F0E8] transition-colors"
-              style={{
-                fontFamily: "'Karla', sans-serif",
-                fontWeight: 700,
-              }}
-            >
+            <button className="px-8 py-3 border border-[var(--forest-veil)] text-[var(--forest-veil)] font-body text-[11px] font-bold tracking-[0.1em] uppercase hover:bg-[var(--forest-veil)] hover:text-[var(--parchment)] transition-all duration-300">
               Write a Review
             </button>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Related Products */}
-      <section className="bg-[#F5F0E8] py-16 px-4">
+      <section className="bg-[var(--parchment)] py-20 px-5">
         <div className="max-w-7xl mx-auto">
-          <h2
-            className="text-[#1A1A1A] text-2xl mb-8 text-center"
-            style={{
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
-              fontWeight: 600,
-            }}
+          <ScrollReveal className="text-center mb-12">
+            <h2 className="font-heading text-[var(--apothecary-black)] text-2xl sm:text-3xl font-semibold">
+              Continue Your Ritual
+            </h2>
+          </ScrollReveal>
+          <StaggerContainer
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            staggerDelay={0.1}
           >
-            Continue Your Ritual
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {related.map((p) => (
-              <ProductCard key={p.slug} product={p} />
+              <StaggerItem key={p.slug}>
+                <ProductCard product={p} />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </div>
       </section>
     </div>
