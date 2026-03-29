@@ -17,8 +17,16 @@ export function useStaggerReveal() {
     const el = ref.current;
     if (!el) return;
 
-    // If already revealed (e.g. filter change re-render), reveal new children immediately
+    // If already revealed (e.g. filter change re-render), reveal immediately
     if (hasRevealed.current) {
+      revealChildren();
+      return;
+    }
+
+    // If already in viewport, reveal immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      hasRevealed.current = true;
       revealChildren();
       return;
     }
