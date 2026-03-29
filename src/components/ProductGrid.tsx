@@ -26,18 +26,9 @@ export default function ProductGrid() {
         </div>
 
         {/* Bento Grid with CSS stagger animation */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 scroll-reveal--stagger">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 items-start scroll-reveal--stagger">
           {blends.map((product, i) => (
-            <div
-              key={product.slug}
-              className={
-                i === 0
-                  ? "sm:col-span-2 lg:col-span-2"
-                  : ""
-              }
-            >
-              <ProductCard product={product} featured={i === 0} />
-            </div>
+            <ProductCard key={product.slug} product={product} featured={i === 0} />
           ))}
         </div>
 
