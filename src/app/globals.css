@@ -778,9 +778,9 @@ main {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Sections fade/slide up as they enter the viewport */
+/* Sections fade/slide up as they enter the viewport — forwards only, stays visible once played */
 .reveal-section {
-  animation: revealUp ease-out both;
+  animation: revealUp ease-out forwards;
   animation-timeline: view();
   animation-range: entry 0% entry 30%;
 }
@@ -987,5 +987,4 @@ summary,
 /* Hardware-accelerate all images for smooth scroll compositing */
 img {
   will-change: transform;
-  content-visibility: auto;
 }

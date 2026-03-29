@@ -96,6 +96,8 @@ export default function RootLayout({
         <link rel="preload" as="image" href="/images/products/mockup-heart-opener.jpg" />
         <link rel="preload" as="image" href="/images/products/mockup-ritual-kit-closed.jpg" />
         <link rel="preload" as="video" href="/videos/hero-video.mp4" />
+        {/* After scroll animation plays, lock element to fully visible so it never fades out on scroll-back */}
+        <script dangerouslySetInnerHTML={{ __html: `requestAnimationFrame(function(){var s=new Set(),t='.reveal-section,.reveal-card,.reveal-left,.reveal-right,.reveal-scale,.reveal-rotate,.reveal-clip',o=new IntersectionObserver(function(e){e.forEach(function(e){if(e.isIntersecting&&!s.has(e.target)){s.add(e.target);e.target.style.animation='none';e.target.style.opacity='1';e.target.style.transform='none';e.target.style.clipPath='none';o.unobserve(e.target)}})},{threshold:0.05});document.querySelectorAll(t).forEach(function(e){o.observe(e)})})` }} />
       </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>
