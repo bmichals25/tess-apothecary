@@ -32,7 +32,7 @@ export default function ProductGrid() {
 
         {/* Bento Grid */}
         <StaggerContainer
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
           staggerDelay={0.12}
         >
           {blends.map((product, i) => (

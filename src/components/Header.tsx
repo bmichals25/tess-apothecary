@@ -57,21 +57,13 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
           <div className="flex items-center justify-between h-18 sm:h-22">
             {/* Logo */}
-            <Link href="/" className="flex flex-col relative z-10" aria-label="Tess's Apothecary - Home">
-              <span
-                className={`font-heading text-xl sm:text-2xl leading-tight font-semibold tracking-tight transition-colors duration-500 ${
-                  scrolled ? "text-[var(--apothecary-black)]" : "text-[var(--parchment)]"
-                }`}
-              >
-                Tess&apos;s
-              </span>
-              <span
-                className={`font-body text-[10px] sm:text-xs tracking-[0.14em] uppercase leading-tight font-medium transition-colors duration-500 ${
-                  scrolled ? "text-[var(--apothecary-black)]" : "text-[var(--parchment)]/80"
-                }`}
-              >
-                Apothecary
-              </span>
+            <Link href="/" className="relative z-10" aria-label="Tess's Apothecary - Home">
+              <img
+                src={scrolled ? "/images/logos/tess-apothecary-wordmark.jpg" : "/images/logos/tess-apothecary-wordmark-light.jpg"}
+                alt="Tess's Apothecary"
+                className="w-auto transition-opacity duration-500"
+                style={{ height: "clamp(2.25rem, 2vw + 1.5rem, 3rem)" }}
+              />
             </Link>
 
             {/* Desktop Nav */}
@@ -95,7 +87,7 @@ export default function Header() {
             <div className="flex items-center gap-5">
               <button
                 onClick={() => setIsOpen(true)}
-                className={`relative transition-colors duration-500 ${
+                className={`relative p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center transition-colors duration-500 ${
                   scrolled
                     ? "text-[var(--apothecary-black)] hover:text-[var(--forest-veil)]"
                     : "text-[var(--parchment)] hover:text-[var(--amber-elixir)]"

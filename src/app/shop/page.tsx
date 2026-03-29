@@ -49,7 +49,7 @@ export default function ShopPage() {
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   aria-pressed={activeCategory === cat}
-                  className={`px-5 py-2.5 font-body text-[11px] font-bold tracking-[0.1em] uppercase transition-all duration-300 ${
+                  className={`px-4 sm:px-5 py-3 sm:py-2.5 min-h-[44px] font-body text-xs sm:text-[11px] font-bold tracking-[0.08em] sm:tracking-[0.1em] uppercase transition-all duration-300 ${
                     activeCategory === cat
                       ? "bg-[var(--forest-veil)] text-[var(--parchment)]"
                       : "bg-transparent text-[var(--apothecary-black)] border border-[var(--warm-stone)]/30 hover:border-[var(--forest-veil)] hover:text-[var(--forest-veil)]"
@@ -63,7 +63,7 @@ export default function ShopPage() {
 
           {/* Product Grid */}
           <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
             staggerDelay={0.1}
           >
             {filtered.map((product) => (

@@ -132,7 +132,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {/* Top left botanical */}
         <svg
-          className="absolute top-[15%] left-[8%] w-32 h-32 opacity-[0.06] float-slow"
+          className="absolute top-[15%] left-[8%] w-16 sm:w-24 lg:w-32 h-16 sm:h-24 lg:h-32 opacity-[0.06] float-slow"
           viewBox="0 0 100 100"
           fill="none"
           stroke="var(--parchment)"
@@ -145,7 +145,7 @@ export default function HeroSection() {
 
         {/* Right botanical */}
         <svg
-          className="absolute top-[30%] right-[10%] w-40 h-40 opacity-[0.05] float-medium"
+          className="absolute top-[30%] right-[10%] w-16 sm:w-24 lg:w-40 h-16 sm:h-24 lg:h-40 opacity-[0.05] float-medium"
           viewBox="0 0 100 100"
           fill="none"
           stroke="var(--parchment)"
@@ -160,7 +160,7 @@ export default function HeroSection() {
 
         {/* Bottom botanical */}
         <svg
-          className="absolute bottom-[20%] left-[15%] w-28 h-28 opacity-[0.04] float-medium"
+          className="absolute bottom-[20%] left-[15%] w-16 sm:w-20 lg:w-28 h-16 sm:h-20 lg:h-28 opacity-[0.04] float-medium"
           viewBox="0 0 100 100"
           fill="none"
           stroke="var(--parchment)"
@@ -197,7 +197,7 @@ export default function HeroSection() {
       />
 
       {/* Candlelight flicker */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[400px] h-[400px] rounded-full candle-glow pointer-events-none" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] rounded-full candle-glow pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 text-center px-5 max-w-4xl mx-auto">

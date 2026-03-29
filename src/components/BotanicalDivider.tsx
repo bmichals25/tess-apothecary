@@ -167,8 +167,8 @@ export default function BotanicalDivider({
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.8, ease: [0.25, 0.8, 0.25, 1] }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: [0.25, 0.8, 0.25, 1] }}
       className={`flex justify-center py-4 ${className}`}
       style={{ color }}
       aria-hidden="true"

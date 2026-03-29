@@ -11,48 +11,21 @@ export default function RitualKitFeature() {
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-7xl mx-auto relative z-[2]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-16 items-center">
           {/* Image area — larger, asymmetric */}
           <ScrollReveal className="lg:col-span-7" direction="left">
             <div className="relative">
-              <div
-                className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden ken-burns"
-                style={{
-                  background: `linear-gradient(145deg, #1A1A1A 0%, #D4A843 40%, #C4873B 70%, #1A1A1A 100%)`,
-                }}
-              >
-                {/* Decorative botanical overlay */}
-                <div className="absolute inset-0 flex items-center justify-center text-[var(--parchment)]">
-                  <svg viewBox="0 0 300 200" className="w-3/4 h-3/4 opacity-[0.08]" fill="none" stroke="currentColor" strokeWidth="0.5">
-                    <circle cx="80" cy="80" r="30" />
-                    <circle cx="150" cy="60" r="25" />
-                    <circle cx="220" cy="85" r="28" />
-                    <circle cx="120" cy="120" r="22" />
-                    <circle cx="190" cy="130" r="26" />
-                    <line x1="80" y1="110" x2="80" y2="180" />
-                    <line x1="150" y1="85" x2="150" y2="180" />
-                    <line x1="220" y1="113" x2="220" y2="180" />
-                    <line x1="120" y1="142" x2="120" y2="180" />
-                    <line x1="190" y1="156" x2="190" y2="180" />
-                  </svg>
-                </div>
-
-                {/* Content overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                  <span className="font-accent text-[var(--parchment)]/50 text-5xl mb-4">
-                    &#10024;
-                  </span>
-                  <span className="font-heading text-[var(--parchment)] text-3xl sm:text-4xl font-semibold">
-                    The Ritual Kit
-                  </span>
-                  <span className="font-body text-[var(--parchment)]/60 text-xs tracking-[0.12em] uppercase mt-3">
-                    All 5 Blends + Intention Guide
-                  </span>
-                </div>
+              <div className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden">
+                <img
+                  src="/images/products/mockup-full-collection.jpg"
+                  alt="The Ritual Kit - All 5 Blends + Intention Guide"
+                  className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.04]"
+                  loading="lazy"
+                />
               </div>
 
               {/* Overlapping price badge */}
-              <div className="absolute -bottom-4 -right-4 lg:-right-8 bg-[var(--forest-veil)] text-[var(--parchment)] px-6 py-4 shadow-lg">
+              <div className="absolute -bottom-4 right-2 sm:-right-4 lg:-right-8 bg-[var(--forest-veil)] text-[var(--parchment)] px-6 py-4 shadow-lg">
                 <span className="font-heading text-2xl font-bold">$58</span>
                 <span className="font-body text-[10px] tracking-[0.08em] uppercase block text-[var(--parchment)]/60">
                   Save $32

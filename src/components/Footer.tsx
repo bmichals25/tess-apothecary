@@ -30,15 +30,11 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="md:col-span-4">
             <div className="mb-6 flex items-start gap-4">
-              <div>
-                <span className="font-heading text-2xl block leading-tight font-semibold tracking-tight">
-                  Tess&apos;s
-                </span>
-                <span className="font-body text-xs tracking-[0.14em] uppercase text-[var(--warm-stone)] font-medium">
-                  Apothecary
-                </span>
-              </div>
-              <WaxSeal size={40} className="opacity-40 mt-1" />
+              <img
+                src="/images/logos/tess-apothecary-seal-logo.jpg"
+                alt="Tess's Apothecary"
+                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full opacity-90"
+              />
             </div>
             <p className="font-body text-sm text-[var(--warm-stone)] leading-relaxed max-w-xs mb-8">
               Handcrafted herbal blends for intention, ritual, and the quiet

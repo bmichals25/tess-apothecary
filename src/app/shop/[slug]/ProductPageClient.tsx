@@ -37,41 +37,15 @@ export default function ProductPageClient({
       {/* Product Detail */}
       <section className="bg-[var(--parchment)] py-12 sm:py-16 px-5">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16">
             {/* Product Image */}
             <ScrollReveal direction="left">
-              <div className="relative aspect-square overflow-hidden">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: `linear-gradient(145deg, ${product.gradientFrom} 0%, ${product.accentColor} 50%, ${product.gradientTo} 100%)`,
-                  }}
+              <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-[var(--linen)]">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 opacity-[0.06]">
-                  <svg
-                    viewBox="0 0 400 400"
-                    className="w-full h-full"
-                    preserveAspectRatio="xMidYMid slice"
-                    fill="none"
-                    stroke="var(--parchment)"
-                    strokeWidth="0.5"
-                  >
-                    <circle cx="200" cy="150" r="60" />
-                    <circle cx="200" cy="150" r="100" />
-                    <circle cx="200" cy="150" r="140" />
-                    <line x1="200" y1="250" x2="200" y2="380" />
-                    <path d="M200 290 Q160 270 140 285" />
-                    <path d="M200 320 Q240 300 260 315" />
-                  </svg>
-                </div>
-                <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
-                  <span className="text-[var(--parchment)]/40 text-7xl mb-4">
-                    {product.iconEmoji}
-                  </span>
-                  <span className="font-heading text-[var(--parchment)] text-4xl sm:text-5xl font-semibold">
-                    {product.name}
-                  </span>
-                </div>
               </div>
             </ScrollReveal>
 
@@ -188,7 +162,7 @@ export default function ProductPageClient({
             </h2>
           </ScrollReveal>
           <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
             staggerDelay={0.1}
           >
             {related.map((p) => (

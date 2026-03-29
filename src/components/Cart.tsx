@@ -49,7 +49,7 @@ export default function Cart() {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="absolute right-0 top-0 h-full w-full max-w-md bg-[var(--parchment)] shadow-2xl flex flex-col"
+            className="absolute right-0 top-0 h-full w-full sm:max-w-sm md:max-w-md bg-[var(--parchment)] shadow-2xl flex flex-col"
           >
             {/* Header — ledger style */}
             <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--warm-stone)]/20 bg-[var(--linen)]">
@@ -113,7 +113,7 @@ export default function Cart() {
                         className="flex items-start gap-4 py-5 border-b border-[var(--warm-stone)]/15 ledger-item pl-3"
                       >
                         {/* Swatch */}
-                        <div className="w-16 h-16 flex-shrink-0 bg-[var(--forest-veil)]/10 flex items-center justify-center">
+                        <div className="w-12 sm:w-16 h-12 sm:h-16 flex-shrink-0 bg-[var(--forest-veil)]/10 flex items-center justify-center">
                           <span className="font-heading text-[var(--forest-veil)] text-xs font-semibold tracking-wide uppercase">
                             {item.name.split(" ").map(w => w[0]).join("")}
                           </span>

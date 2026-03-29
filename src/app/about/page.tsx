@@ -15,8 +15,16 @@ export default function AboutPage() {
   return (
     <div className="pt-20 sm:pt-24">
       {/* Hero */}
-      <section className="bg-[#1A1A1A] py-20 px-4">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="bg-[#1A1A1A] py-20 px-4 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/products/mockup-full-collection.jpg"
+            alt=""
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A]/60 via-[#1A1A1A]/40 to-[#1A1A1A]/80" />
+        </div>
+        <div className="max-w-3xl mx-auto text-center relative z-10">
           <p
             className="text-[#C4873B] text-lg mb-3"
             style={{ fontFamily: "'Caveat', cursive" }}
@@ -189,15 +197,12 @@ export default function AboutPage() {
       <section className="bg-[#1A1A1A] py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="aspect-[3/4] bg-gradient-to-br from-[#2D4A3E] to-[#C4873B] relative overflow-hidden">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span
-                  className="text-[#F5F0E8]/20 text-8xl"
-                  style={{ fontFamily: "'Caveat', cursive" }}
-                >
-                  T
-                </span>
-              </div>
+            <div className="aspect-[3/4] relative overflow-hidden">
+              <img
+                src="/images/products/mockup-ritual-kit-open.jpg"
+                alt="Tess's Apothecary collection"
+                className="w-full h-full object-cover"
+              />
             </div>
             <div>
               <p

@@ -15,6 +15,7 @@ export interface Product {
   gradientFrom: string;
   gradientTo: string;
   iconEmoji: string;
+  image: string;
 }
 
 export const products: Product[] = [
@@ -37,6 +38,7 @@ export const products: Product[] = [
     gradientFrom: "#1A1A1A",
     gradientTo: "#3D3B6B",
     iconEmoji: "\u263D",
+    image: "/images/products/mockup-eventide-elixir.jpg",
   },
   {
     slug: "sun-tonic",
@@ -57,6 +59,7 @@ export const products: Product[] = [
     gradientFrom: "#2D4A3E",
     gradientTo: "#E5A830",
     iconEmoji: "\u2600",
+    image: "/images/products/mockup-sun-tonic.jpg",
   },
   {
     slug: "shadow-work",
@@ -82,6 +85,7 @@ export const products: Product[] = [
     gradientFrom: "#1A1A1A",
     gradientTo: "#4A3428",
     iconEmoji: "\u2727",
+    image: "/images/products/mockup-shadow-work.jpg",
   },
   {
     slug: "inner-sight",
@@ -108,6 +112,7 @@ export const products: Product[] = [
     gradientFrom: "#2D4A3E",
     gradientTo: "#3A7D7B",
     iconEmoji: "\u2726",
+    image: "/images/products/mockup-inner-sight.jpg",
   },
   {
     slug: "heart-opener",
@@ -133,6 +138,7 @@ export const products: Product[] = [
     gradientFrom: "#B5706E",
     gradientTo: "#D4908E",
     iconEmoji: "\u2661",
+    image: "/images/products/mockup-heart-opener.jpg",
   },
   {
     slug: "the-ritual-kit",
@@ -160,6 +166,7 @@ export const products: Product[] = [
     gradientFrom: "#1A1A1A",
     gradientTo: "#D4A843",
     iconEmoji: "\u2728",
+    image: "/images/products/mockup-ritual-kit-closed.jpg",
   },
 ];
 
