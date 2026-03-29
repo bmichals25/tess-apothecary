@@ -914,3 +914,26 @@ summary,
   background-color: var(--linen);
 }
 
+/* ─── Blend Builder Step Transitions ─── */
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeSlideInReverse {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+

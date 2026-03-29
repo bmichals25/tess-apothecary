@@ -7,6 +7,7 @@ import Testimonials from "@/components/Testimonials";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import InstagramSection from "@/components/InstagramSection";
 import BotanicalDivider from "@/components/BotanicalDivider";
+import CustomBlendCTA from "@/components/CustomBlendCTA";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <BrandStory />
       <BotanicalDivider variant="simple" className="bg-[var(--parchment)] pt-2 pb-2" />
       <HowItWorks />
+      <CustomBlendCTA />
       <BotanicalDivider variant="stars" className="bg-[var(--linen)] pt-2 pb-2" color="var(--warm-stone)" />
       <Testimonials />
       <NewsletterSignup />
