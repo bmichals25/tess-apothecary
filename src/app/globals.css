@@ -755,12 +755,47 @@ main {
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
-/* ─── Reveal classes are now purely structural (no animation) ─── */
-/* Content is always visible. Hover interactions remain. */
-.reveal-section,
+/* ─── Scroll-Driven Reveal Animations ─── */
+/* Animation tied to scroll position — animates continuously as you scroll, no JS */
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes revealCard {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Sections fade/slide up as they enter the viewport */
+.reveal-section {
+  animation: revealUp ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 30%;
+}
+
+/* Product cards with staggered entry */
 .reveal-card {
-  opacity: 1;
-  transform: none;
+  animation: revealCard ease-out both;
+  animation-timeline: view();
+  animation-range: entry 0% entry 35%;
+}
+
+.reveal-card:nth-child(2) { animation-range: entry 5% entry 40%; }
+.reveal-card:nth-child(3) { animation-range: entry 10% entry 45%; }
+.reveal-card:nth-child(4) { animation-range: entry 7% entry 42%; }
+.reveal-card:nth-child(5) { animation-range: entry 12% entry 47%; }
+.reveal-card:nth-child(6) { animation-range: entry 15% entry 50%; }
+
+/* Graceful fallback: if browser doesn't support scroll-driven, just show everything */
+@supports not (animation-timeline: view()) {
+  .reveal-section,
+  .reveal-card {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ─── Social Icon Hover ─── */
