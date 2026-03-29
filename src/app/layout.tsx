@@ -132,19 +132,34 @@ export default function RootLayout({
         </div>
         <script dangerouslySetInnerHTML={{ __html: `
           window.addEventListener('load', function() {
-            // Kill ALL scroll-driven animations — everything is loaded, just show it
-            document.querySelectorAll('.reveal-section,.reveal-card,.reveal-left,.reveal-right,.reveal-scale,.reveal-rotate,.reveal-clip').forEach(function(el) {
-              el.style.animation = 'none';
-              el.style.opacity = '1';
-              el.style.transform = 'none';
-              el.style.clipPath = 'none';
-            });
             // Fade out loader
             var loader = document.getElementById('site-loader');
             if (loader) {
               loader.style.opacity = '0';
               setTimeout(function() { loader.remove(); }, 600);
             }
+
+            // Set up scroll reveals — single shared IntersectionObserver
+            var observer = new IntersectionObserver(function(entries) {
+              entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('is-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            }, {
+              threshold: 0.1,
+              rootMargin: '0px 0px -40px 0px'
+            });
+
+            document.querySelectorAll('.scroll-reveal, .scroll-reveal--left, .scroll-reveal--right, .scroll-reveal--scale, .scroll-reveal--stagger').forEach(function(el) {
+              var rect = el.getBoundingClientRect();
+              if (rect.top < window.innerHeight + 40) {
+                el.classList.add('is-visible');
+              } else {
+                observer.observe(el);
+              }
+            });
           });
         `}} />
 

@@ -72,7 +72,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <div className="text-center mb-20 reveal-section">
+        <div className="text-center mb-20 scroll-reveal">
           <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
             Chapter II
           </p>
@@ -84,9 +84,9 @@ export default function HowItWorks() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16 scroll-reveal--stagger">
           {steps.map((step, index) => (
-            <div key={step.number} className="reveal-card">
+            <div key={step.number}>
               <div className="text-center group">
                 {/* Icon with apothecary label frame */}
                 <div className="mx-auto mb-8 w-24 h-24 rounded-full border border-[var(--warm-stone)]/20 flex items-center justify-center text-[var(--forest-veil)] group-hover:border-[var(--amber-elixir)]/40 group-hover:text-[var(--amber-elixir)] transition-all duration-500 relative">

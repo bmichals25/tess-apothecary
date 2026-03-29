@@ -34,7 +34,7 @@ export default function NewsletterSignup() {
         <div className="absolute inset-0 fog-layer-2 opacity-20" />
       </div>
 
-      <div className="relative z-10 max-w-2xl mx-auto text-center reveal-scale">
+      <div className="relative z-10 max-w-2xl mx-auto text-center scroll-reveal--scale">
         <div className="flex justify-center mb-6">
           <WaxSeal size={48} className="opacity-50" />
         </div>

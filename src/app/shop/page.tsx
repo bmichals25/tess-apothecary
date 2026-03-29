@@ -16,7 +16,7 @@ export default function ShopPage() {
     <div className="pt-20 sm:pt-24">
       {/* Header */}
       <section className="bg-[var(--apothecary-black)] py-20 sm:py-24 px-5">
-        <div className="max-w-4xl mx-auto text-center reveal-section">
+        <div className="max-w-4xl mx-auto text-center scroll-reveal">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             The Apothecary
           </p>
@@ -54,7 +54,7 @@ export default function ShopPage() {
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 scroll-reveal--stagger">
             {filtered.map((product) => {
               const isRitualKit = product.slug === "the-ritual-kit";
               const badge =
@@ -66,9 +66,9 @@ export default function ShopPage() {
               return (
                 <div
                   key={product.slug}
-                  className={`reveal-card ${
+                  className={
                     isRitualKit ? "sm:col-span-2 lg:col-span-2" : ""
-                  }`}
+                  }
                 >
                   <ProductCard
                     product={product}
@@ -81,7 +81,7 @@ export default function ShopPage() {
           </div>
 
           {/* Editorial Callout */}
-          <div className="mt-14 mb-4 text-center reveal-section">
+          <div className="mt-14 mb-4 text-center scroll-reveal">
             <div className="max-w-2xl mx-auto py-10 px-6 border-t border-b border-[var(--warm-stone)]/20">
               <p className="font-accent text-[var(--amber-elixir)] text-lg mb-2">
                 Not sure where to start?

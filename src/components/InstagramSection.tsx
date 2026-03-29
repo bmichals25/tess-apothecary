@@ -10,7 +10,7 @@ const gridItems = [
 export default function InstagramSection() {
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
-      <div className="max-w-6xl mx-auto relative z-[2] reveal-section">
+      <div className="max-w-6xl mx-auto relative z-[2] scroll-reveal">
         <div className="text-center mb-12">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             @tessapothecary

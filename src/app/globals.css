@@ -669,15 +669,13 @@ main {
   .hero-fade-in,
   .toast-enter,
   .toast-exit,
-  .animate-fade-in-up,
   .steam-wisp-1,
   .steam-wisp-2,
   .steam-wisp-3 {
     animation: none !important;
   }
 
-  .hero-fade-in,
-  .animate-fade-in-up {
+  .hero-fade-in {
     opacity: 1;
     transform: none;
   }
@@ -749,143 +747,86 @@ main {
   transform: scale(1.05);
 }
 
-/* ─── Product Grid Stagger Animation ─── */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ─── Scroll Reveal: CSS Transitions triggered by Intersection Observer ─── */
+/* Elements start hidden, get .is-visible class added once, transition plays, stays forever */
+
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.4s ease-out forwards;
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-/* ─── Scroll-Driven Reveal Animations ─── */
-/* Animation tied to scroll position — animates continuously as you scroll, no JS */
-
-@keyframes revealUp {
-  from { opacity: 0.3; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Direction variants */
+.scroll-reveal--left {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.scroll-reveal--left.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes revealCard {
-  from { opacity: 0.3; transform: translateY(8px) scale(0.99); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+.scroll-reveal--right {
+  opacity: 0;
+  transform: translateX(24px);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.scroll-reveal--right.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-/* Sections fade/slide up as they enter the viewport — forwards only, stays visible once played */
-.reveal-section {
-  animation: revealUp ease-out forwards;
-  animation-timeline: view();
-  animation-range: entry 0% entry 30%;
+.scroll-reveal--scale {
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.7s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 0.7s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.scroll-reveal--scale.is-visible {
+  opacity: 1;
+  transform: none;
 }
 
-/* Product cards with staggered entry */
-.reveal-card {
-  animation: revealCard ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 35%;
+/* Stagger delays for child elements */
+.scroll-reveal--stagger > :nth-child(1) { transition-delay: 0s; }
+.scroll-reveal--stagger > :nth-child(2) { transition-delay: 0.1s; }
+.scroll-reveal--stagger > :nth-child(3) { transition-delay: 0.15s; }
+.scroll-reveal--stagger > :nth-child(4) { transition-delay: 0.2s; }
+.scroll-reveal--stagger > :nth-child(5) { transition-delay: 0.25s; }
+.scroll-reveal--stagger > :nth-child(6) { transition-delay: 0.3s; }
+
+/* Children in stagger container start hidden */
+.scroll-reveal--stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s cubic-bezier(0.25, 0.8, 0.25, 1),
+              transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.reveal-card:nth-child(2) { animation-range: entry 5% entry 40%; }
-.reveal-card:nth-child(3) { animation-range: entry 10% entry 45%; }
-.reveal-card:nth-child(4) { animation-range: entry 7% entry 42%; }
-.reveal-card:nth-child(5) { animation-range: entry 12% entry 47%; }
-.reveal-card:nth-child(6) { animation-range: entry 15% entry 50%; }
-
-/* ─── Additional scroll-driven animation variants ─── */
-
-@keyframes revealLeft {
-  from { opacity: 0.3; transform: translateX(-15px); }
-  to { opacity: 1; transform: translateX(0); }
+.scroll-reveal--stagger.is-visible > * {
+  opacity: 1;
+  transform: none;
 }
 
-@keyframes revealRight {
-  from { opacity: 0.3; transform: translateX(15px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes revealScale {
-  from { opacity: 0.4; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes revealRotate {
-  from { opacity: 0.4; transform: rotate(-1.5deg) translateY(8px); }
-  to { opacity: 1; transform: rotate(0deg) translateY(0); }
-}
-
-@keyframes parallaxUp {
-  from { transform: translateY(40px); }
-  to { transform: translateY(-40px); }
-}
-
-/* Slide in from left */
-.reveal-left {
-  animation: revealLeft ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 35%;
-}
-
-/* Slide in from right */
-.reveal-right {
-  animation: revealRight ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 35%;
-}
-
-/* Scale in */
-.reveal-scale {
-  animation: revealScale ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 30%;
-}
-
-/* Slight rotation reveal (for quotes, accent elements) */
-.reveal-rotate {
-  animation: revealRotate ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 30%;
-}
-
-/* Parallax — element moves slower than scroll (subtle depth) */
-.parallax-slow {
-  animation: parallaxUp linear both;
-  animation-timeline: view();
-  animation-range: entry 0% exit 100%;
-}
-
-/* Image reveal with clip-path wipe */
-@keyframes revealClip {
-  from { clip-path: inset(0 0 30% 0); opacity: 0.5; }
-  to { clip-path: inset(0 0 0 0); opacity: 1; }
-}
-
-.reveal-clip {
-  animation: revealClip ease-out both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 40%;
-}
-
-/* Graceful fallback: if browser doesn't support scroll-driven, just show everything */
-@supports not (animation-timeline: view()) {
-  .reveal-section,
-  .reveal-card,
-  .reveal-left,
-  .reveal-right,
-  .reveal-scale,
-  .reveal-rotate,
-  .reveal-clip,
-  .parallax-slow {
-    animation: none;
+/* Reduced motion for scroll reveals */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal,
+  .scroll-reveal--left,
+  .scroll-reveal--right,
+  .scroll-reveal--scale,
+  .scroll-reveal--stagger > * {
+    transition: none;
     opacity: 1;
     transform: none;
-    clip-path: none;
   }
 }
 
@@ -973,18 +914,3 @@ summary,
   background-color: var(--linen);
 }
 
-/* ─── Preload optimization: GPU-accelerate animated elements ─── */
-.reveal-section,
-.reveal-card,
-.reveal-left,
-.reveal-right,
-.reveal-scale,
-.reveal-rotate,
-.reveal-clip {
-  will-change: transform, opacity;
-}
-
-/* Hardware-accelerate all images for smooth scroll compositing */
-img {
-  will-change: transform;
-}

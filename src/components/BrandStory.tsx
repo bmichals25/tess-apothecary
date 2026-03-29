@@ -21,7 +21,7 @@ export default function BrandStory() {
           </div>
 
           {/* Right: story content */}
-          <div className="lg:col-span-10 reveal-right">
+          <div className="lg:col-span-10 scroll-reveal--right">
             <div>
               <p className="font-accent text-[var(--amber-elixir)] text-base mb-2 opacity-70">
                 Chapter I
@@ -31,7 +31,7 @@ export default function BrandStory() {
               </h2>
             </div>
 
-            <blockquote className="reveal-rotate grimoire-quote font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
+            <blockquote className="scroll-reveal grimoire-quote font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
               There&apos;s a kind of knowing that lives in your hands before it
               reaches your head. The way you instinctively reach for chamomile
               when the world gets loud. The way your grandmother brewed something

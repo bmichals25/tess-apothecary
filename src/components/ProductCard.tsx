@@ -30,14 +30,14 @@ export default function ProductCard({
   return (
     <div
       className={`product-card apothecary-label group flex flex-col bg-[var(--bone)] overflow-hidden ${
-        featured ? "col-span-full lg:col-span-2 lg:grid lg:grid-cols-2" : ""
+        featured ? "col-span-full lg:col-span-2 lg:grid lg:grid-cols-2 lg:items-center" : ""
       }`}
     >
       {/* Product Image Area */}
       <Link
         href={`/shop/${product.slug}`}
         className={`block relative overflow-hidden product-image-container ${
-          featured ? "aspect-[3/4] sm:aspect-[4/3] lg:aspect-auto" : "aspect-[3/4]"
+          featured ? "aspect-[3/4] sm:aspect-[4/3] lg:aspect-square" : "aspect-[3/4]"
         }`}
       >
         {/* Badge */}
