@@ -33,11 +33,9 @@ export default function HeroSection() {
         <source src="/videos/hero-video.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-[var(--apothecary-black)]/60" />
-
-      {/* Subtle gradient overlay for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[var(--apothecary-black)] via-transparent to-[var(--apothecary-black)]/40" />
+      {/* Gradient overlay — stronger on left for text readability, fades to let video show on right */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[var(--apothecary-black)]/85 via-[var(--apothecary-black)]/50 to-[var(--apothecary-black)]/30" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[var(--apothecary-black)]/80 via-transparent to-[var(--apothecary-black)]/30" />
 
       {/* Floating botanical SVGs — pure CSS animation */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -97,8 +95,8 @@ export default function HeroSection() {
       {/* Candlelight glow — pure CSS */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[200px] sm:w-[300px] lg:w-[400px] h-[200px] sm:h-[300px] lg:h-[400px] rounded-full candle-glow pointer-events-none" />
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-5 max-w-4xl mx-auto">
+      {/* Content — left-aligned for editorial feel, gives video room to breathe */}
+      <div className="relative z-10 text-left px-5 sm:px-10 lg:px-20 max-w-7xl mx-auto">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -146,7 +144,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.9, duration: 0.6 }}
-          className="font-body text-[var(--warm-stone)] text-base sm:text-lg max-w-lg mx-auto mb-10 leading-relaxed"
+          className="font-body text-[var(--parchment)]/70 text-base sm:text-lg max-w-lg mb-10 leading-relaxed"
         >
           Five organic herbal blends crafted for daily ritual.
           From morning energy to evening calm.
@@ -156,7 +154,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.1, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
+          className="flex flex-col sm:flex-row gap-4 justify-start"
         >
           <Link
             href="/shop"
