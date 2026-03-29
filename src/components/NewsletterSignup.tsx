@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import ScrollReveal from "./ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
 import StarField from "./StarField";
 import WaxSeal from "./WaxSeal";
@@ -39,29 +38,23 @@ export default function NewsletterSignup() {
       </div>
 
       <div className="relative z-10 max-w-2xl mx-auto text-center">
-        <ScrollReveal>
-          <div className="flex justify-center mb-6">
-            <WaxSeal size={48} className="opacity-50" />
-          </div>
-          <p className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-3">
-            The kettle&apos;s on
-          </p>
-        </ScrollReveal>
+        <div className="flex justify-center mb-6">
+          <WaxSeal size={48} className="opacity-50" />
+        </div>
+        <p className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-3">
+          The kettle&apos;s on
+        </p>
 
-        <ScrollReveal delay={0.1}>
-          <h2 className="font-heading text-[var(--parchment)] text-fluid-section font-semibold mb-5">
-            Join the Coven
-          </h2>
-        </ScrollReveal>
+        <h2 className="font-heading text-[var(--parchment)] text-fluid-section font-semibold mb-5">
+          Join the Coven
+        </h2>
 
-        <ScrollReveal delay={0.2}>
-          <p className="font-body text-[var(--warm-stone)] text-base sm:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
-            Sign up for seasonal rituals, behind-the-blend stories, and early
-            access to new releases. Plus, 15% off your first ritual.
-          </p>
-        </ScrollReveal>
+        <p className="font-body text-[var(--warm-stone)] text-base sm:text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+          Sign up for seasonal rituals, behind-the-blend stories, and early
+          access to new releases. Plus, 15% off your first ritual.
+        </p>
 
-        <ScrollReveal delay={0.3}>
+        <div>
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
@@ -106,13 +99,11 @@ export default function NewsletterSignup() {
               </motion.form>
             )}
           </AnimatePresence>
-        </ScrollReveal>
+        </div>
 
-        <ScrollReveal delay={0.4}>
-          <p className="font-body text-[var(--warm-stone)]/40 text-xs mt-6">
-            No spam, just magic. Unsubscribe anytime.
-          </p>
-        </ScrollReveal>
+        <p className="font-body text-[var(--warm-stone)]/40 text-xs mt-6">
+          No spam, just magic. Unsubscribe anytime.
+        </p>
       </div>
     </section>
   );

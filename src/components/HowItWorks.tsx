@@ -1,8 +1,5 @@
 "use client";
 
-import ScrollReveal from "./ScrollReveal";
-import { StaggerContainer, StaggerItem } from "./ScrollReveal";
-
 const steps = [
   {
     number: "01",
@@ -74,7 +71,7 @@ export default function HowItWorks() {
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <ScrollReveal className="text-center mb-20">
+        <div className="text-center mb-20">
           <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
             Chapter II
           </p>
@@ -84,14 +81,11 @@ export default function HowItWorks() {
           <h2 className="font-heading text-[var(--apothecary-black)] text-fluid-section font-semibold">
             How It Works
           </h2>
-        </ScrollReveal>
+        </div>
 
-        <StaggerContainer
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16"
-          staggerDelay={0.2}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
           {steps.map((step, index) => (
-            <StaggerItem key={step.number}>
+            <div key={step.number}>
               <div className="text-center group">
                 {/* Icon with apothecary label frame */}
                 <div className="mx-auto mb-8 w-24 h-24 rounded-full border border-[var(--warm-stone)]/20 flex items-center justify-center text-[var(--forest-veil)] group-hover:border-[var(--amber-elixir)]/40 group-hover:text-[var(--amber-elixir)] transition-all duration-500 relative">
@@ -120,9 +114,9 @@ export default function HowItWorks() {
                   <div className="hidden md:block absolute top-[3.5rem] left-[calc(33.33%*var(--step-i)+16.66%+3rem)] w-[calc(33.33%-6rem)] h-px bg-[var(--warm-stone)]/10" style={{ "--step-i": index } as React.CSSProperties} />
                 )}
               </div>
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

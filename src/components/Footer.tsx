@@ -3,8 +3,6 @@
 import Link from "next/link";
 import MoonPhases from "./MoonPhases";
 import WaxSeal from "./WaxSeal";
-import { motion } from "framer-motion";
-
 export default function Footer() {
   return (
     <footer className="bg-dark-wood text-[var(--parchment)] relative overflow-hidden" role="contentinfo">
@@ -140,15 +138,9 @@ export default function Footer() {
         </div>
 
         {/* Moon Phases */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="mt-12 mb-8"
-        >
+        <div className="mt-12 mb-8">
           <MoonPhases color="var(--warm-stone)" className="opacity-30" />
-        </motion.div>
+        </div>
 
         {/* Divider */}
         <div className="pt-8 border-t border-[var(--warm-stone)]/15 flex flex-col sm:flex-row items-center justify-between gap-4">

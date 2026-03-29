@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import ProductCard from "@/components/ProductCard";
-import ScrollReveal from "@/components/ScrollReveal";
-import { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import { products, categories } from "@/lib/products";
 
 export default function ShopPage() {
@@ -19,22 +17,16 @@ export default function ShopPage() {
       {/* Header */}
       <section className="bg-[var(--apothecary-black)] py-20 sm:py-24 px-5">
         <div className="max-w-4xl mx-auto text-center">
-          <ScrollReveal>
-            <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
-              The Apothecary
-            </p>
-          </ScrollReveal>
-          <ScrollReveal delay={0.1}>
-            <h1 className="font-heading text-[var(--parchment)] text-fluid-display font-semibold mb-5">
-              Shop All Blends
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal delay={0.2}>
-            <p className="font-body text-[var(--warm-stone)] text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              Each blend is crafted with organic herbs and a specific intention.
-              Find the one that&apos;s calling to you.
-            </p>
-          </ScrollReveal>
+          <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
+            The Apothecary
+          </p>
+          <h1 className="font-heading text-[var(--parchment)] text-fluid-display font-semibold mb-5">
+            Shop All Blends
+          </h1>
+          <p className="font-body text-[var(--warm-stone)] text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
+            Each blend is crafted with organic herbs and a specific intention.
+            Find the one that&apos;s calling to you.
+          </p>
         </div>
       </section>
 
@@ -42,7 +34,7 @@ export default function ShopPage() {
       <section className="bg-[var(--parchment)] py-16 px-5">
         <div className="max-w-7xl mx-auto">
           {/* Category Filters */}
-          <ScrollReveal className="flex flex-wrap justify-center gap-3 mb-14" delay={0.1}>
+          <div className="flex flex-wrap justify-center gap-3 mb-14">
             <div role="group" aria-label="Filter by category" className="flex flex-wrap justify-center gap-3">
               {categories.map((cat) => (
                 <button
@@ -59,28 +51,25 @@ export default function ShopPage() {
                 </button>
               ))}
             </div>
-          </ScrollReveal>
+          </div>
 
           {/* Product Grid */}
-          <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
-            staggerDelay={0.1}
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             {filtered.map((product) => (
-              <StaggerItem key={product.slug}>
+              <div key={product.slug}>
                 <ProductCard product={product} />
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
 
           {/* FDA Disclaimer */}
-          <ScrollReveal className="text-center mt-14" delay={0.3}>
+          <div className="text-center mt-14">
             <p className="font-body text-[var(--warm-stone)] text-xs max-w-2xl mx-auto leading-relaxed">
               *These statements have not been evaluated by the Food and Drug
               Administration. These products are not intended to diagnose, treat,
               cure, or prevent any disease.
             </p>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
     </div>

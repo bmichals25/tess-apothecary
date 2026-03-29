@@ -3,8 +3,6 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import ProductCard from "@/components/ProductCard";
-import ScrollReveal from "@/components/ScrollReveal";
-import { StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import type { Product } from "@/lib/products";
 
 export default function ProductPageClient({
@@ -39,7 +37,7 @@ export default function ProductPageClient({
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-16">
             {/* Product Image */}
-            <ScrollReveal direction="left">
+            <div>
               <div className="relative aspect-[4/3] sm:aspect-square overflow-hidden bg-[var(--linen)]">
                 <img
                   src={product.image}
@@ -47,10 +45,10 @@ export default function ProductPageClient({
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* Product Info */}
-            <ScrollReveal delay={0.2}>
+            <div>
               <div className="flex flex-col">
                 <span className="font-body text-[var(--warm-stone)] text-[11px] tracking-[0.12em] uppercase font-bold mb-3">
                   {product.category}
@@ -123,7 +121,7 @@ export default function ProductPageClient({
                   *These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease.
                 </p>
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
@@ -131,21 +129,18 @@ export default function ProductPageClient({
       {/* Related Products */}
       <section className="bg-[var(--parchment)] py-20 px-5">
         <div className="max-w-7xl mx-auto">
-          <ScrollReveal className="text-center mb-12">
+          <div className="text-center mb-12">
             <h2 className="font-heading text-[var(--apothecary-black)] text-2xl sm:text-3xl font-semibold">
               Continue Your Ritual
             </h2>
-          </ScrollReveal>
-          <StaggerContainer
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
-            staggerDelay={0.1}
-          >
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             {related.map((p) => (
-              <StaggerItem key={p.slug}>
+              <div key={p.slug}>
                 <ProductCard product={p} />
-              </StaggerItem>
+              </div>
             ))}
-          </StaggerContainer>
+          </div>
         </div>
       </section>
     </div>

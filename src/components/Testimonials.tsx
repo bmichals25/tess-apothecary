@@ -1,8 +1,5 @@
 "use client";
 
-import ScrollReveal from "./ScrollReveal";
-import { StaggerContainer, StaggerItem } from "./ScrollReveal";
-
 const testimonials = [
   {
     quote:
@@ -34,18 +31,18 @@ export default function Testimonials() {
   return (
     <section className="bg-[var(--linen)] parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <ScrollReveal className="text-center mb-16">
+        <div className="text-center mb-16">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             Voices from the Coven
           </p>
           <h2 className="font-heading text-[var(--apothecary-black)] text-fluid-section font-semibold">
             What Our Community Says
           </h2>
-        </ScrollReveal>
+        </div>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.15}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {testimonials.map((t, i) => (
-            <StaggerItem key={i}>
+            <div key={i}>
               <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-all duration-500 apothecary-label">
                 {/* Large decorative quote mark */}
                 <span className="absolute top-6 left-8 font-heading text-7xl text-[var(--amber-elixir)]/10 leading-none select-none pointer-events-none">
@@ -76,9 +73,9 @@ export default function Testimonials() {
                 {/* Decorative bottom line */}
                 <div className="absolute bottom-0 left-8 right-8 h-px bg-gradient-to-r from-transparent via-[var(--amber-elixir)]/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </div>
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

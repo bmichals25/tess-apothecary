@@ -1,8 +1,6 @@
 "use client";
 
 import ProductCard from "./ProductCard";
-import ScrollReveal from "./ScrollReveal";
-import { StaggerContainer, StaggerItem } from "./ScrollReveal";
 import { products } from "@/lib/products";
 import Link from "next/link";
 
@@ -14,7 +12,7 @@ export default function ProductGrid() {
     <section className="bg-[var(--bone)] parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-7xl mx-auto relative z-[2]">
         {/* Section Header */}
-        <ScrollReveal className="text-center mb-16">
+        <div className="text-center mb-16">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Apothecary
           </p>
@@ -25,36 +23,34 @@ export default function ProductGrid() {
             Five intention-crafted blends. Each designed for a specific moment
             in your day.
           </p>
-        </ScrollReveal>
+        </div>
 
-        {/* Bento Grid */}
-        <StaggerContainer
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8"
-          staggerDelay={0.12}
-        >
+        {/* Bento Grid with CSS stagger animation */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
           {blends.map((product, i) => (
-            <StaggerItem
+            <div
               key={product.slug}
-              className={
+              className={`animate-fade-in-up ${
                 i === 0
                   ? "sm:col-span-2 lg:col-span-2"
                   : ""
-              }
+              }`}
+              style={{ animationDelay: `${i * 0.1}s` }}
             >
               <ProductCard product={product} featured={i === 0} />
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
 
         {/* View All Link */}
-        <ScrollReveal className="text-center mt-14" delay={0.4}>
+        <div className="text-center mt-14">
           <Link
             href="/shop"
             className="inline-block px-10 py-4 border border-[var(--forest-veil)] text-[var(--forest-veil)] font-body text-sm font-bold tracking-[0.1em] uppercase hover:bg-[var(--forest-veil)] hover:text-[var(--parchment)] transition-all duration-400"
           >
             View All Blends
           </Link>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   );

@@ -1,8 +1,5 @@
 "use client";
 
-import ScrollReveal from "./ScrollReveal";
-import { StaggerContainer, StaggerItem } from "./ScrollReveal";
-
 const gridItems = [
   { image: "/images/products/mockup-eventide-elixir.jpg", alt: "Eventide Elixir herbal tea blend" },
   { image: "/images/products/mockup-sun-tonic.jpg", alt: "Sun Tonic morning tea blend" },
@@ -14,21 +11,18 @@ export default function InstagramSection() {
   return (
     <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
       <div className="max-w-6xl mx-auto relative z-[2]">
-        <ScrollReveal className="text-center mb-12">
+        <div className="text-center mb-12">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             @tessapothecary
           </p>
           <h2 className="font-heading text-[var(--apothecary-black)] text-fluid-section font-semibold">
             Follow the Ritual
           </h2>
-        </ScrollReveal>
+        </div>
 
-        <StaggerContainer
-          className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4"
-          staggerDelay={0.1}
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
           {gridItems.map((item, i) => (
-            <StaggerItem key={i}>
+            <div key={i}>
               <a
                 href="https://instagram.com/tessapothecary"
                 target="_blank"
@@ -59,9 +53,9 @@ export default function InstagramSection() {
                   </span>
                 </div>
               </a>
-            </StaggerItem>
+            </div>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

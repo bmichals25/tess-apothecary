@@ -664,13 +664,15 @@ main {
   .hero-fade-in,
   .toast-enter,
   .toast-exit,
+  .animate-fade-in-up,
   .steam-wisp-1,
   .steam-wisp-2,
   .steam-wisp-3 {
     animation: none !important;
   }
 
-  .hero-fade-in {
+  .hero-fade-in,
+  .animate-fade-in-up {
     opacity: 1;
     transform: none;
   }
@@ -739,6 +741,22 @@ main {
 
 .ken-burns:hover > * {
   transform: scale(1.05);
+}
+
+/* ─── Product Grid Stagger Animation ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
 }
 
 /* ─── Social Icon Hover ─── */
