@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import type { Product } from "@/lib/products";
+import SteamWisps from "./SteamWisps";
 
 const botanicalSVGs: Record<string, React.ReactNode> = {
   "eventide-elixir": (
@@ -110,14 +111,14 @@ export default function ProductCard({
 
   return (
     <div
-      className={`product-card group flex flex-col bg-[var(--bone)] overflow-hidden ${
+      className={`product-card apothecary-label group flex flex-col bg-[var(--bone)] overflow-hidden ${
         featured ? "col-span-full lg:col-span-2 lg:grid lg:grid-cols-2" : ""
       }`}
     >
       {/* Product Image Area */}
       <Link
         href={`/shop/${product.slug}`}
-        className={`block relative overflow-hidden ${
+        className={`block relative overflow-hidden ken-burns ${
           featured ? "aspect-[4/3] lg:aspect-auto" : "aspect-[3/4]"
         }`}
       >
@@ -139,6 +140,11 @@ export default function ProductCard({
         {/* Botanical illustration */}
         <div className="absolute inset-0 flex items-center justify-center text-[var(--parchment)]">
           {botanicalSVGs[product.slug]}
+        </div>
+
+        {/* Steam wisps on hover */}
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+          <SteamWisps className="top-2" />
         </div>
 
         {/* Content overlay */}

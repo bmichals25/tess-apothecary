@@ -11,10 +11,13 @@ export default function ProductGrid() {
   const blends = products.filter((p) => p.slug !== "the-ritual-kit");
 
   return (
-    <section className="bg-[var(--bone)] py-24 sm:py-32 px-5">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-[var(--bone)] parchment-texture py-24 sm:py-32 px-5">
+      <div className="max-w-7xl mx-auto relative z-[2]">
         {/* Section Header */}
         <ScrollReveal className="text-center mb-16">
+          <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
+            The Apothecary Shelf
+          </p>
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Apothecary
           </p>

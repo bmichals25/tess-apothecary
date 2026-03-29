@@ -2,10 +2,14 @@
 
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
+import StarField from "./StarField";
 
 export default function BrandStory() {
   return (
-    <section className="relative bg-[var(--apothecary-black)] py-28 sm:py-36 px-5 overflow-hidden">
+    <section className="relative bg-dark-wood py-28 sm:py-36 px-5 overflow-hidden">
+      {/* Star field background */}
+      <StarField />
+
       {/* Subtle atmospheric gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--forest-veil)]/10 via-transparent to-[var(--forest-veil)]/5" />
 
@@ -26,13 +30,16 @@ export default function BrandStory() {
           {/* Right: story content */}
           <div className="lg:col-span-10">
             <ScrollReveal>
-              <p className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-8">
-                Our Story
+              <p className="font-accent text-[var(--amber-elixir)] text-base mb-2 opacity-70">
+                Chapter I
               </p>
+              <h2 className="font-heading text-[var(--parchment)] text-fluid-section font-semibold mb-8">
+                Our Story
+              </h2>
             </ScrollReveal>
 
             <ScrollReveal delay={0.15}>
-              <blockquote className="font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
+              <blockquote className="grimoire-quote font-heading text-[var(--parchment)] text-fluid-subtitle font-normal italic leading-[1.5] mb-10">
                 There&apos;s a kind of knowing that lives in your hands before it
                 reaches your head. The way you instinctively reach for chamomile
                 when the world gets loud. The way your grandmother brewed something

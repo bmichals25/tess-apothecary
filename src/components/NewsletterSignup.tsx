@@ -3,6 +3,8 @@
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
 import { motion, AnimatePresence } from "framer-motion";
+import StarField from "./StarField";
+import WaxSeal from "./WaxSeal";
 
 export default function NewsletterSignup() {
   const [email, setEmail] = useState("");
@@ -25,7 +27,10 @@ export default function NewsletterSignup() {
   };
 
   return (
-    <section className="relative bg-[var(--apothecary-black)] py-24 sm:py-32 px-5 overflow-hidden">
+    <section className="relative bg-dark-wood py-24 sm:py-32 px-5 overflow-hidden">
+      {/* Star field */}
+      <StarField />
+
       {/* Atmospheric background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-[var(--forest-veil)]/20 via-transparent to-transparent" />
@@ -35,6 +40,9 @@ export default function NewsletterSignup() {
 
       <div className="relative z-10 max-w-2xl mx-auto text-center">
         <ScrollReveal>
+          <div className="flex justify-center mb-6">
+            <WaxSeal size={48} className="opacity-50" />
+          </div>
           <p className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-3">
             The kettle&apos;s on
           </p>

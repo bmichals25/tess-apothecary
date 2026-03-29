@@ -51,11 +51,14 @@ export default function Cart() {
             transition={{ type: "spring", damping: 30, stiffness: 300 }}
             className="absolute right-0 top-0 h-full w-full max-w-md bg-[var(--parchment)] shadow-2xl flex flex-col"
           >
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--warm-stone)]/20">
-              <h2 className="font-heading text-xl text-[var(--apothecary-black)] font-semibold">
-                Your Apothecary Order
-              </h2>
+            {/* Header — ledger style */}
+            <div className="flex items-center justify-between px-6 py-5 border-b border-[var(--warm-stone)]/20 bg-[var(--linen)]">
+              <div>
+                <h2 className="font-heading text-xl text-[var(--apothecary-black)] font-semibold">
+                  Your Apothecary Order
+                </h2>
+                <p className="font-accent text-[var(--amber-elixir)] text-xs mt-0.5 opacity-70">The Ledger</p>
+              </div>
               <button
                 onClick={() => setIsOpen(false)}
                 className="text-[var(--apothecary-black)] hover:text-[var(--forest-veil)] transition-colors p-1"
@@ -107,7 +110,7 @@ export default function Cart() {
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: -20, height: 0 }}
                         transition={{ delay: i * 0.05, duration: 0.3 }}
-                        className="flex items-start gap-4 py-5 border-b border-[var(--warm-stone)]/15"
+                        className="flex items-start gap-4 py-5 border-b border-[var(--warm-stone)]/15 ledger-item pl-3"
                       >
                         {/* Swatch */}
                         <div className="w-16 h-16 flex-shrink-0 bg-[var(--forest-veil)]/10 flex items-center justify-center">

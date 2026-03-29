@@ -32,9 +32,12 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-[var(--linen)] py-24 sm:py-32 px-5">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-[var(--linen)] parchment-texture py-24 sm:py-32 px-5">
+      <div className="max-w-6xl mx-auto relative z-[2]">
         <ScrollReveal className="text-center mb-16">
+          <p className="font-accent text-[var(--amber-elixir)] text-base mb-1 opacity-70">
+            Voices from the Coven
+          </p>
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             From the Coven
           </p>
@@ -46,19 +49,19 @@ export default function Testimonials() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerDelay={0.15}>
           {testimonials.map((t, i) => (
             <StaggerItem key={i}>
-              <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-shadow duration-500">
+              <div className="bg-[var(--parchment)] p-8 sm:p-10 relative group hover:shadow-lg transition-all duration-500 apothecary-label">
                 {/* Large decorative quote mark */}
                 <span className="absolute top-6 left-8 font-heading text-7xl text-[var(--amber-elixir)]/10 leading-none select-none pointer-events-none">
                   &ldquo;
                 </span>
 
-                <blockquote className="font-body text-[var(--apothecary-black)] text-base leading-[1.8] mb-8 relative z-10 pt-8">
-                  {t.quote}
+                <blockquote className="grimoire-quote font-body text-[var(--apothecary-black)] text-base leading-[1.8] mb-8 relative z-10 pt-8 border-l-0">
+                  <span className="italic">{t.quote}</span>
                 </blockquote>
 
                 <div className="flex items-center gap-4">
-                  {/* Avatar placeholder with blend color */}
-                  <div className="w-10 h-10 rounded-full bg-[var(--forest-veil)]/15 flex items-center justify-center">
+                  {/* Avatar placeholder with botanical leaf */}
+                  <div className="w-10 h-10 rounded-full bg-[var(--forest-veil)]/15 flex items-center justify-center relative">
                     <span className="font-heading text-[var(--forest-veil)] text-sm font-semibold">
                       {t.author.charAt(0)}
                     </span>

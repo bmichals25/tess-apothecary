@@ -51,7 +51,7 @@ function getStoredCart(): CartItem[] {
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
   const [isOpen, setIsOpen] = useState(false);
-  const [hydrated, setHydrated] = useState(false);
+  const hydratedRef = useRef(false);
   const [toast, setToast] = useState<ToastState | null>(null);
   const toastTimeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
@@ -59,19 +59,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     const stored = getStoredCart();
     if (stored.length > 0) {
-      // Using requestAnimationFrame to avoid the lint rule about setState in effects
       requestAnimationFrame(() => {
         setItems(stored);
       });
     }
-    setHydrated(true);
+    hydratedRef.current = true;
   }, []);
 
   useEffect(() => {
-    if (hydrated) {
+    if (hydratedRef.current) {
       localStorage.setItem("tess-cart", JSON.stringify(items));
     }
-  }, [items, hydrated]);
+  }, [items]);
 
   const showToast = useCallback((message: string) => {
     // Clear any existing timeout

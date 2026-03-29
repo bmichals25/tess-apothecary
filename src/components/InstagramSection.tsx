@@ -12,8 +12,8 @@ const gridItems = [
 
 export default function InstagramSection() {
   return (
-    <section className="bg-[var(--parchment)] py-24 sm:py-32 px-5">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
+      <div className="max-w-6xl mx-auto relative z-[2]">
         <ScrollReveal className="text-center mb-12">
           <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
             @tessapothecary
@@ -33,7 +33,7 @@ export default function InstagramSection() {
                 href="https://instagram.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block aspect-square relative overflow-hidden group cursor-pointer"
+                className="block aspect-square relative overflow-hidden group cursor-pointer ken-burns"
                 aria-label={`View Instagram post ${i + 1}`}
               >
                 <div

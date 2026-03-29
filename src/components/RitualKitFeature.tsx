@@ -3,19 +3,20 @@
 import Link from "next/link";
 import { useCart } from "@/lib/cart-context";
 import ScrollReveal from "./ScrollReveal";
+import WaxSeal from "./WaxSeal";
 
 export default function RitualKitFeature() {
   const { addItem } = useCart();
 
   return (
-    <section className="bg-[var(--parchment)] py-24 sm:py-32 px-5">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-aged-paper parchment-texture py-24 sm:py-32 px-5">
+      <div className="max-w-7xl mx-auto relative z-[2]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
           {/* Image area — larger, asymmetric */}
           <ScrollReveal className="lg:col-span-7" direction="left">
             <div className="relative">
               <div
-                className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden"
+                className="aspect-[4/3] lg:aspect-[16/10] overflow-hidden ken-burns"
                 style={{
                   background: `linear-gradient(145deg, #1A1A1A 0%, #D4A843 40%, #C4873B 70%, #1A1A1A 100%)`,
                 }}
@@ -63,9 +64,12 @@ export default function RitualKitFeature() {
           {/* Text content */}
           <div className="lg:col-span-5">
             <ScrollReveal delay={0.2}>
-              <p className="font-accent text-[var(--amber-elixir)] text-xl mb-3">
-                The Hero Product
-              </p>
+              <div className="flex items-center gap-3 mb-3">
+                <p className="font-accent text-[var(--amber-elixir)] text-xl">
+                  The Hero Product
+                </p>
+                <WaxSeal size={28} className="opacity-40" />
+              </div>
             </ScrollReveal>
 
             <ScrollReveal delay={0.3}>

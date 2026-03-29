@@ -3,6 +3,20 @@
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import StarField from "./StarField";
+
+const wordVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: 0.6 + i * 0.12,
+      duration: 0.6,
+      ease: [0.25, 0.8, 0.25, 1] as [number, number, number, number],
+    },
+  }),
+};
 
 export default function HeroSection() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -39,12 +53,12 @@ export default function HeroSection() {
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         size: Math.random() * 3 + 1,
-        speedX: (Math.random() - 0.5) * 0.2,
-        speedY: -Math.random() * 0.4 - 0.05,
+        speedX: (Math.random() - 0.5) * 0.15,
+        speedY: -Math.random() * 0.3 - 0.05,
         opacity: Math.random() * 0.3,
         fadeDir: Math.random() > 0.5 ? 1 : -1,
         wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: Math.random() * 0.01 + 0.005,
+        wobbleSpeed: Math.random() * 0.008 + 0.003,
       });
     }
 
@@ -53,11 +67,11 @@ export default function HeroSection() {
 
       for (const p of particles) {
         p.wobble += p.wobbleSpeed;
-        p.x += p.speedX + Math.sin(p.wobble) * 0.3;
+        p.x += p.speedX + Math.sin(p.wobble) * 0.25;
         p.y += p.speedY;
-        p.opacity += p.fadeDir * 0.002;
+        p.opacity += p.fadeDir * 0.0015;
 
-        if (p.opacity >= 0.4) p.fadeDir = -1;
+        if (p.opacity >= 0.35) p.fadeDir = -1;
         if (p.opacity <= 0) {
           p.fadeDir = 1;
           p.opacity = 0;
@@ -97,10 +111,15 @@ export default function HeroSection() {
     };
   }, []);
 
+  const headlineWords = ["Brewed", "with"];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[var(--apothecary-black)]">
       {/* Animated gradient background */}
       <div className="absolute inset-0 hero-gradient" />
+
+      {/* Star field */}
+      <StarField />
 
       {/* Fog / mist layers */}
       <div className="absolute inset-0">
@@ -154,6 +173,20 @@ export default function HeroSection() {
           <circle cx="80" cy="28" r="5" />
           <circle cx="50" cy="8" r="5" />
         </svg>
+
+        {/* Crescent moon - top right */}
+        <motion.svg
+          className="absolute top-[12%] right-[20%] w-16 h-16 opacity-[0.08]"
+          viewBox="0 0 50 50"
+          fill="none"
+          stroke="var(--parchment)"
+          strokeWidth="0.5"
+          initial={{ opacity: 0, rotate: -20 }}
+          animate={{ opacity: 0.08, rotate: 0 }}
+          transition={{ delay: 1.5, duration: 2 }}
+        >
+          <path d="M30 5 A18 18 0 0 1 30 45 A12 18 0 0 0 30 5" fill="rgba(245,240,232,0.03)" />
+        </motion.svg>
       </div>
 
       {/* Floating particles canvas */}
@@ -178,21 +211,36 @@ export default function HeroSection() {
           Small-Batch Herbal Tea Blends
         </motion.p>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 1, ease: [0.25, 0.8, 0.25, 1] }}
-          className="font-heading text-[var(--parchment)] text-fluid-hero font-semibold mb-4"
-        >
-          Brewed with
+        {/* Split-word animated headline */}
+        <h1 className="font-heading text-[var(--parchment)] text-fluid-hero font-semibold mb-4">
+          {headlineWords.map((word, i) => (
+            <motion.span
+              key={word}
+              custom={i}
+              variants={wordVariants}
+              initial="hidden"
+              animate="visible"
+              className="inline-block mr-[0.3em]"
+            >
+              {word}
+            </motion.span>
+          ))}
           <br />
-          <span className="italic">Intention</span>
-        </motion.h1>
+          <motion.span
+            custom={2}
+            variants={wordVariants}
+            initial="hidden"
+            animate="visible"
+            className="italic inline-block"
+          >
+            Intention
+          </motion.span>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8 }}
+          transition={{ delay: 1.0, duration: 0.8 }}
           className="font-accent text-[var(--amber-elixir)] text-xl sm:text-2xl mb-6"
         >
           Every cup is a spell
@@ -201,7 +249,7 @@ export default function HeroSection() {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
+          transition={{ delay: 1.1, duration: 0.8 }}
           className="font-body text-[var(--warm-stone)] text-base sm:text-lg max-w-lg mx-auto mb-10 leading-relaxed"
         >
           Five organic herbal blends crafted for daily ritual.
@@ -211,7 +259,7 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
+          transition={{ delay: 1.4, duration: 0.8 }}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link

@@ -80,18 +80,13 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`font-body text-[13px] font-medium tracking-[0.06em] transition-colors duration-300 relative group ${
+                  className={`nav-link-draw font-body text-[13px] font-medium tracking-[0.06em] transition-colors duration-300 ${
                     scrolled
-                      ? "text-[var(--apothecary-black)] hover:text-[var(--forest-veil)]"
-                      : "text-[var(--parchment)]/80 hover:text-[var(--parchment)]"
+                      ? `text-[var(--apothecary-black)] hover:text-[var(--forest-veil)] nav-link-draw-dark`
+                      : `text-[var(--parchment)]/80 hover:text-[var(--parchment)] nav-link-draw-light`
                   }`}
                 >
                   {link.label}
-                  <span
-                    className={`absolute -bottom-1 left-0 h-px w-0 group-hover:w-full transition-all duration-300 ${
-                      scrolled ? "bg-[var(--forest-veil)]" : "bg-[var(--parchment)]"
-                    }`}
-                  />
                 </Link>
               ))}
             </nav>
