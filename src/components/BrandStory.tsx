@@ -1,13 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import StarField from "./StarField";
-
 export default function BrandStory() {
   return (
     <section className="relative bg-dark-wood py-28 sm:py-36 px-5 overflow-hidden">
-      {/* Star field background */}
-      <StarField />
 
       {/* Subtle atmospheric gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[var(--forest-veil)]/10 via-transparent to-[var(--forest-veil)]/5" />

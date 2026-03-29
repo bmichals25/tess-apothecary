@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import StarField from "./StarField";
 import WaxSeal from "./WaxSeal";
 
 export default function NewsletterSignup() {
@@ -27,8 +26,6 @@ export default function NewsletterSignup() {
 
   return (
     <section className="relative bg-dark-wood py-24 sm:py-32 px-5 overflow-hidden">
-      {/* Star field */}
-      <StarField />
 
       {/* Atmospheric background */}
       <div className="absolute inset-0">

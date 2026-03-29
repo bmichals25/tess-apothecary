@@ -42,12 +42,7 @@ body {
   color: #1A1A1A;
 }
 
-/* ─── Smooth scrolling (respects reduced motion) ─── */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
-  }
-}
+/* scroll-behavior: smooth REMOVED — it hijacks native scroll and causes jank */
 
 /* ─── Skip to Content (Accessibility) ─── */
 .skip-to-content {
@@ -760,47 +755,12 @@ main {
   animation: fadeInUp 0.4s ease-out forwards;
 }
 
-/* ─── Scroll-Driven Reveal Animations (Apple-style) ─── */
-/* Animation progress is tied to scroll position — no waiting for scroll to stop */
-
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes revealCard {
-  from { opacity: 0; transform: translateY(16px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Section-level scroll reveal: animates as element enters viewport */
-.reveal-section {
-  animation: revealUp linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 25%;
-}
-
-/* Product cards: same scroll-linked animation with staggered ranges */
+/* ─── Reveal classes are now purely structural (no animation) ─── */
+/* Content is always visible. Hover interactions remain. */
+.reveal-section,
 .reveal-card {
-  animation: revealCard linear both;
-  animation-timeline: view();
-  animation-range: entry 0% entry 30%;
-}
-
-.reveal-card:nth-child(2) { animation-range: entry 3% entry 33%; }
-.reveal-card:nth-child(3) { animation-range: entry 6% entry 36%; }
-.reveal-card:nth-child(4) { animation-range: entry 4% entry 34%; }
-.reveal-card:nth-child(5) { animation-range: entry 8% entry 38%; }
-.reveal-card:nth-child(6) { animation-range: entry 10% entry 40%; }
-
-/* Fallback for browsers without scroll-driven animations (~10%) */
-@supports not (animation-timeline: view()) {
-  .reveal-section,
-  .reveal-card {
-    animation: none;
-    opacity: 1;
-    transform: translateY(0);
-  }
+  opacity: 1;
+  transform: none;
 }
 
 /* ─── Social Icon Hover ─── */
